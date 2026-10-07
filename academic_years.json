@@ -1,0 +1,32 @@
+[
+  {
+    "id": "2024-2025",
+    "name": "2024-2025",
+    "status": "En Cours",
+    "isCurrent": false,
+    "startDate": "2024-09-02",
+    "endDate": "2025-06-27",
+    "description": "Session Académique 2024-2025 • Clôturée et Archivée",
+    "createdAt": "2024-08-15T08:00:00.000Z"
+  },
+  {
+    "id": "2025-2026",
+    "name": "2025-2026",
+    "status": "Clôturée",
+    "isCurrent": false,
+    "startDate": "2025-09-01",
+    "endDate": "2026-06-26",
+    "description": "Session Académique 2025-2026 • Données scellées",
+    "createdAt": "2025-08-20T08:00:00.000Z"
+  },
+  {
+    "id": "2026-2027",
+    "name": "2026-2027",
+    "status": "En Cours",
+    "isCurrent": true,
+    "startDate": "2026-09-07",
+    "endDate": "2027-06-25",
+    "description": "Session Académique Principale Active • Rentrée Officielle Douala Logpom",
+    "createdAt": "2026-08-25T08:00:00.000Z"
+  }
+]

@@ -1,0 +1,163 @@
+[
+  {
+    "id": "TCH-001",
+    "name": "Dr. Jean-Paul Kamga",
+    "email": "jp.kamga@itmc-it.cm",
+    "phone": "+237 699 12 34 56",
+    "function": "Chef de Département Informatique",
+    "department": "Informatique & Numérique",
+    "mainSpecialty": "Génie Logiciel",
+    "assignedClasses": [
+      "G1-GL",
+      "G2-GL",
+      "L3-GL"
+    ],
+    "promotions": [
+      "G1",
+      "G2",
+      "L3"
+    ],
+    "specialties": [
+      "Génie Logiciel",
+      "Algorithmique Avancée",
+      "Architecture Cloud & DevOps"
+    ],
+    "studentsCount": 24,
+    "activeStudents": 24,
+    "atRiskStudents": 0,
+    "progress": 88,
+    "successRate": 94,
+    "presenceRate": 96,
+    "status": "Actif",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=JeanPaulKamga",
+    "academicYear": "2026-2027"
+  },
+  {
+    "id": "TCH-002",
+    "name": "Prof. Diane Ebongue",
+    "email": "d.ebongue@itmc-it.cm",
+    "phone": "+237 677 23 45 67",
+    "function": "Coordinatrice Pédagogique Réseaux",
+    "department": "Cyber-sécurité & Réseaux",
+    "mainSpecialty": "Cyber-sécurité & Réseaux",
+    "assignedClasses": [
+      "R1-RCS",
+      "R2-RCS",
+      "L3-RCS"
+    ],
+    "promotions": [
+      "R1",
+      "R2",
+      "L3"
+    ],
+    "specialties": [
+      "Cyber-sécurité & Réseaux",
+      "Sécurité Offensive & Pentesting",
+      "Administration Systèmes"
+    ],
+    "studentsCount": 24,
+    "activeStudents": 23,
+    "atRiskStudents": 1,
+    "progress": 82,
+    "successRate": 90,
+    "presenceRate": 93,
+    "status": "Actif",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=DianeEbongue",
+    "academicYear": "2026-2027"
+  },
+  {
+    "id": "TCH-003",
+    "name": "Dr. Marc Talla",
+    "email": "m.talla@itmc-it.cm",
+    "phone": "+237 690 34 56 78",
+    "function": "Enseignant Chercheur Systèmes & Données",
+    "department": "Informatique & Numérique",
+    "mainSpecialty": "Big Data & Systèmes Distribués",
+    "assignedClasses": [
+      "G2-GL",
+      "R2-RCS",
+      "L3-GL"
+    ],
+    "promotions": [
+      "G2",
+      "R2",
+      "L3"
+    ],
+    "specialties": [
+      "Architecture Cloud & DevOps",
+      "Bases de Données Massives",
+      "Systèmes Distribués"
+    ],
+    "studentsCount": 24,
+    "activeStudents": 24,
+    "atRiskStudents": 0,
+    "progress": 85,
+    "successRate": 91,
+    "presenceRate": 95,
+    "status": "Actif",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=MarcTalla",
+    "academicYear": "2026-2027"
+  },
+  {
+    "id": "TCH-004",
+    "name": "Mme Sarah N'Dongo",
+    "email": "s.ndongo@itmc-it.cm",
+    "phone": "+237 675 45 67 89",
+    "function": "Responsable Atelier Créatif",
+    "department": "Design & Arts Numériques",
+    "mainSpecialty": "Infographie & UI/UX Design",
+    "assignedClasses": [
+      "D1-DES",
+      "D2-DES"
+    ],
+    "promotions": [
+      "D1",
+      "D2"
+    ],
+    "specialties": [
+      "Infographie & UI/UX Design",
+      "Identité Visuelle & Branding",
+      "Motion Design"
+    ],
+    "studentsCount": 16,
+    "activeStudents": 16,
+    "atRiskStudents": 0,
+    "progress": 90,
+    "successRate": 95,
+    "presenceRate": 97,
+    "status": "Actif",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=SarahNDongo",
+    "academicYear": "2026-2027"
+  },
+  {
+    "id": "TCH-005",
+    "name": "Dr. Alain Mbia",
+    "email": "a.mbia@itmc-it.cm",
+    "phone": "+237 691 56 78 90",
+    "function": "Responsable Pôle Management & Finance",
+    "department": "Gestion & Marketing Digital",
+    "mainSpecialty": "Comptabilité & Marketing Digital",
+    "assignedClasses": [
+      "C1-CMD",
+      "C2-CMD"
+    ],
+    "promotions": [
+      "C1",
+      "C2"
+    ],
+    "specialties": [
+      "Comptabilité & Marketing Digital",
+      "Comptabilité SYSCOHADA",
+      "Marketing & Stratégies Digitales"
+    ],
+    "studentsCount": 16,
+    "activeStudents": 15,
+    "atRiskStudents": 1,
+    "progress": 80,
+    "successRate": 88,
+    "presenceRate": 92,
+    "status": "Actif",
+    "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=AlainMbia",
+    "academicYear": "2026-2027"
+  }
+]

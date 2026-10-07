@@ -1,0 +1,84 @@
+# CFP-ITMC | Institut de Formation Professionnelle ITMC Douala Logpom
+> Centre de Formation Professionnelle Agréé MINEFOP (Ministère de l'Emploi et de la Formation Professionnelle, République du Cameroun)
+> Site officiel : https://cfp-itmc.com
+> Contact : +237 677 88 99 00 / +237 699 00 11 22 | Email : cfp.itmc@gmail.com / contact@cfp-itmc.com
+> Localisation : Douala Logpom, Carrefour Bassong (Face Pharmacie), Littoral, Cameroun
+
+## Présentation Institutionnelle
+Le CFP-ITMC (Institut / Centre de Formation Professionnelle ITMC) est un établissement de référence au Cameroun pour la formation professionnelle et technique d'élite. Agréé par le MINEFOP sous arrêté ministériel, il forme des techniciens supérieurs, des cadres d'exécution et des professionnels qualifiés directement opérationnels pour les entreprises camerounaises et internationales.
+
+### Chiffres Clés & Accréditations
+- **Tutelle Académique** : MINEFOP (Ministère de l'Emploi et de la Formation Professionnelle, Cameroun)
+- **Diplômes délivrés** : DQP (Diplôme de Qualification Professionnelle d'État - 12 Mois), CQP (Certificat de Qualification Professionnelle), AQP (Attestation de Qualification Professionnelle)
+- **35+ Spécialités d'Avenir** réparties en 4 Pôles Majeurs
+- **Pédagogie** : 80% de Pratique en Ateliers & Laboratoires, 20% de Théorie Appliquée + 2 à 3 mois de Stage Professionnel Garanti en Entreprise
+- **Régimes d'Études** : Cours du Jour (08h30 - 13h30) et Cours du Soir (17h30 - 20h30) pour professionnels et travailleurs en reconversion
+- **Taux de Réussite aux Examens Nationaux MINEFOP** : Supérieur à 96%
+- **Taux d'Insertion Professionnelle** : 92% à 6 mois post-diplôme
+
+---
+
+## Les 4 Pôles de Formation & 35 Spécialités DQP
+
+### 1. Pôle Informatique, Digital, Réseaux & IA (8 Spécialités)
+- **Génie Logiciel & Développement Web/Mobile** : HTML/CSS, JavaScript, React, Node.js, Python, Flutter, bases de données MySQL/PostgreSQL, APIs REST, DevOps et hébergement cloud.
+- **Réseaux, Systèmes & Cybersécurité** : Administration Linux/Windows Server, routage Cisco CCNA, câblage structuré, pare-feu pfSense, sécurité des systèmes et virtualisation (VMware/Proxmox).
+- **Maintenance Informatique & Systèmes Embarqués** : Dépannage matériel/logiciel, micro-soudure, maintenance préventive/curative, réparation smartphones et ordinateurs portables.
+- **Infographie 2D & Design Graphique** : Photoshop, Illustrator, InDesign, typographie, identité de marque, chartes graphiques et packaging.
+- **Montage Vidéo, Cadrage & Motion Design** : Premiere Pro, After Effects, DaVinci Resolve, techniques de prise de vue, étalonnage et effets visuels.
+- **Marketing Digital, Community Management & E-Commerce** : Stratégie médias sociaux, Facebook/TikTok/Google Ads, SEO/SEA, création de boutiques en ligne (Shopify/WooCommerce).
+- **Secrétariat Bureautique & Comptabilité Informatisée** : Maîtrise avancée Word, Excel (TCD, macros), PowerPoint, rédaction administrative et logiciel Sage Comptabilité.
+- **Maintenance et Déploiement Télécoms & Fibre Optique** : Raccordement par fusion, réflectométrie OTDR, architecture FTTH et réseaux GSM/4G/5G.
+
+### 2. Pôle Gestion, Commerce, Transit, Santé & Tertiaire (7 Spécialités)
+- **Secrétariat Médical & Gestion Hospitalière** : Terminologie médicale, accueil patientèle, tenue des dossiers médicaux, facturation clinique et logiciel de santé.
+- **Délégué Médical & Représentation Pharmaceutique** : Pharmacologie appliquée, techniques de visite médicale, négociation officine et marketing du médicament.
+- **Douane, Transit & Logistique Portuaire** : Procédures SYDONIA, dédouanement import/export, transport multimodal, incoterms et gestion des entrepôts au Port Autonome de Douala.
+- **Comptabilité & Gestion d'Entreprise (Sage Saari)** : Comptabilité générale SYSCOHADA révisé, déclarations fiscales (DSF, TVA), paie et gestion financière.
+- **Banque, Microfinance & Opérations de Caisse** : Gestion de guichet, octroi de micro-crédits, conformité bancaire et gestion de la trésorerie.
+- **Gestion des Ressources Humaines (GRH) & Paie** : Droit du travail camerounais, gestion des carrières, fiches de paie, recrutement et déclarations CNPS.
+- **Secrétariat de Direction Bilingue** : Organisation administrative, correspondance bilingue (Français/Anglais), gestion d'agendas de direction et protocole.
+
+### 3. Pôle Bâtiment, Génie Civil & Construction (11 Spécialités)
+- **Dessin de Bâtiment & CAO/DAO (AutoCAD / ArchiCAD)** : Plans architecturaux 2D/3D, calculs de métrés, permis de construire et modélisation BIM.
+- **Électricité Bâtiment & Domotique** : Schémas électriques, tableaux de distribution, éclairage basse consommation, vidéosurveillance et automatismes.
+- **Plomberie Sanitaire & Raccordements Hydrauliques** : Canalisations PER/Multicouche, sanitaires, chauffe-eau solaires, fosses septiques et dépannage.
+- **Topographie, Géodésie & Travaux Publics** : Utilisation de stations totales, niveaux optiques, théodolites, GPS différentiel et calculs de cubatures.
+- **Maçonnerie, Gros Œuvre & Béton Armé** : Fondations, coffrages, ferraillage, coulage de dalles et respect des normes EUROCODE/BTP Cameroun.
+- **Carrelage & Revêtement des Sols et Murs** : Pose scellée/collée de carreaux, faïence, mosaïque, marbre et étanchéité.
+- **Peinture Bâtiment, Décoration & Revêtements** : Peinture intérieure/extérieure, stucco, faux plafonds en staff/BA13 et papier peint.
+- **Menuiserie Aluminium, Vitrerie & Façades** : Portes, fenêtres coulissantes, murs-rideaux, cloisons vitrées et garde-corps.
+- **Menuiserie Bois & Ébénisterie Moderne** : Meubles sur mesure, portes d'intérieur, placards encastrés et charpentes en bois.
+- **Climatisation & Froid Bâtiment** : Installation, tirage au vide, charge en fluide frigorigène (R410A, R32) et maintenance de climatiseurs split/cassette.
+- **Construction Métallique & Charpente Acier** : Débitage, assemblage, montage de hangars industriels et structures métalliques.
+
+### 4. Pôle Industrie, Mécanique, Énergie & Soudure (9 Spécialités)
+- **Énergies Renouvelables & Systèmes Solaires Photovoltaïques** : Dimensionnement de kits solaires, onduleurs hybrides, parcs batteries LiFePO4 et raccordement au réseau.
+- **Soudure Industrielle & Chaudronnerie (Arc, TIG, MIG/MAG)** : Procédés 111, 141, 135/136, soudage sur tuyauteries et structures sous pression.
+- **Électromécanique & Maintenance Industrielle** : Moteurs triphasés, variateurs de vitesse, automate programmable (Siemens/Schneider) et diagnostic.
+- **Froid Industriel & Climatisation Commerciale** : Chambres froides positives/négatives, centrales frigorifiques et tunnels de congélation.
+- **Mécanique Automobile & Diagnostic Électronique** : Scanner automobile OBD-II, injection électronique Common Rail, boîtes automatiques et freinage ABS.
+- **Électricité Industrielle & Automatismes** : Armoires électriques de puissance, démarreurs progressifs, capteurs industriels et supervision SCADA.
+- **Usinage & Tournage-Fraisage Conventionnel/CNC** : Usinage de pièces mécaniques, métrologie et lecture de plans industriels.
+- **Instrumentation & Régulation Industrielle** : Boucles de régulation PID, transmetteurs de pression/température et vannes de régulation.
+- **Qualité, Hygiène, Sécurité & Environnement (QHSE)** : Normes ISO 9001, 14001, 45001, prévention des risques industriels et audits de sécurité.
+
+---
+
+## Informations Pratiques & Inscriptions
+
+### Conditions d'Admission
+- Niveau requis : De sans diplôme / CEP / BEPC jusqu'au Probatoire / BAC et Licence selon les filières (classes adaptées par niveau).
+- Dossier à fournir : Photocopie CNI ou Acte de Naissance, 2 photos 4x4 couleur, photocopie du dernier diplôme ou relevé de notes, fiche d'inscription.
+- Inscription en ligne : Accessible 24h/24 sur https://cfp-itmc.com/#formations ou https://cfp-itmc.com/contact
+
+### Frais de Scolarité & Modalités
+- Inscription : 25 000 FCFA à 35 000 FCFA selon la spécialité
+- Scolarité annuelle : De 180 000 FCFA à 350 000 FCFA selon le pôle technique, payable en 3 à 5 tranches échelonnées
+- Fournitures incluses : Accès aux laboratoires et ateliers, kits d'outillage pour travaux pratiques, Wi-Fi campus haut débit, encadrement de stage.
+
+### Coordonnées du Campus
+- **Adresse Physique** : Logpom, Carrefour Bassong, Face Pharmacie de Logpom, Arrondissement de Douala 5ème, Département du Wouri, Région du Littoral, Cameroun.
+- **Téléphone / WhatsApp** : +237 677 88 99 00 / +237 699 00 11 22
+- **Email** : cfp.itmc@gmail.com / contact@cfp-itmc.com
+- **Site Web Officiel** : https://cfp-itmc.com

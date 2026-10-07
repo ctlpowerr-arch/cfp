@@ -1,0 +1,597 @@
+[
+  {
+    "id": "tuyauterie",
+    "name": "Tuyauterie",
+    "filiere": "Bâtiment, Construction et Travaux",
+    "filiereId": "batiment",
+    "registrationFee": 25000,
+    "totalTuition": 180000,
+    "tranche1": 90000,
+    "tranche2": 60000,
+    "tranche3": 30000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Formation certifiée DQP/CQP MINEFOP (80% pratique en atelier)"
+  },
+  {
+    "id": "carrelage-batiment",
+    "name": "Carrelage – Bâtiment",
+    "filiere": "Bâtiment, Construction et Travaux",
+    "filiereId": "batiment",
+    "registrationFee": 25000,
+    "totalTuition": 160000,
+    "tranche1": 80000,
+    "tranche2": 50000,
+    "tranche3": 30000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Pose droite, diagonale, faïence et mosaïques"
+  },
+  {
+    "id": "coffreur-ferrailleur",
+    "name": "Coffreur / Ferrailleur",
+    "filiere": "Bâtiment, Construction et Travaux",
+    "filiereId": "batiment",
+    "registrationFee": 25000,
+    "totalTuition": 170000,
+    "tranche1": 85000,
+    "tranche2": 55000,
+    "tranche3": 30000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Gros œuvre, béton armé et ferraillage d'ouvrages"
+  },
+  {
+    "id": "poseur-de-paves",
+    "name": "Poseur de Pavés",
+    "filiere": "Bâtiment, Construction et Travaux",
+    "filiereId": "batiment",
+    "registrationFee": 20000,
+    "totalTuition": 150000,
+    "tranche1": 75000,
+    "tranche2": 50000,
+    "tranche3": 25000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Pavage décoratif, allées, parkings et voirie"
+  },
+  {
+    "id": "staff-et-decoration",
+    "name": "Staff et Décoration",
+    "filiere": "Bâtiment, Construction et Travaux",
+    "filiereId": "batiment",
+    "registrationFee": 25000,
+    "totalTuition": 180000,
+    "tranche1": 90000,
+    "tranche2": 60000,
+    "tranche3": 30000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Faux plafonds staff, corniches et moulures décoratives"
+  },
+  {
+    "id": "etancheite",
+    "name": "Étanchéité",
+    "filiere": "Bâtiment, Construction et Travaux",
+    "filiereId": "batiment",
+    "registrationFee": 25000,
+    "totalTuition": 170000,
+    "tranche1": 85000,
+    "tranche2": 55000,
+    "tranche3": 30000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Protection toitures terrasses, résines et membranes"
+  },
+  {
+    "id": "peinture-batiment",
+    "name": "Peinture Bâtiment",
+    "filiere": "Bâtiment, Construction et Travaux",
+    "filiereId": "batiment",
+    "registrationFee": 20000,
+    "totalTuition": 150000,
+    "tranche1": 75000,
+    "tranche2": 50000,
+    "tranche3": 25000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Enduits de lissage, pistolet Airless et peintures décoratives"
+  },
+  {
+    "id": "metallerie-soudure-tuyauterie",
+    "name": "Métallerie-Soudure-Tuyauterie",
+    "filiere": "Bâtiment, Construction et Travaux",
+    "filiereId": "batiment",
+    "registrationFee": 25000,
+    "totalTuition": 190000,
+    "tranche1": 95000,
+    "tranche2": 60000,
+    "tranche3": 35000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Charpente métallique, soudage à l'arc MMA/MIG et assemblage"
+  },
+  {
+    "id": "maconnerie-gros-oeuvre",
+    "name": "Maçonnerie Gros Œuvre",
+    "filiere": "Bâtiment, Construction et Travaux",
+    "filiereId": "batiment",
+    "registrationFee": 25000,
+    "totalTuition": 160000,
+    "tranche1": 80000,
+    "tranche2": 50000,
+    "tranche3": 30000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Implantation, fondations, élévation de murs et chapes"
+  },
+  {
+    "id": "vitrerie-aluminium",
+    "name": "Vitrerie Aluminium",
+    "filiere": "Bâtiment, Construction et Travaux",
+    "filiereId": "batiment",
+    "registrationFee": 25000,
+    "totalTuition": 185000,
+    "tranche1": 95000,
+    "tranche2": 60000,
+    "tranche3": 30000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Menuiserie aluminium, baies vitrées coulissantes et façades"
+  },
+  {
+    "id": "plomberie",
+    "name": "Plomberie",
+    "filiere": "Bâtiment, Construction et Travaux",
+    "filiereId": "batiment",
+    "registrationFee": 25000,
+    "totalTuition": 175000,
+    "tranche1": 90000,
+    "tranche2": 55000,
+    "tranche3": 30000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Réseaux sanitaires PPR/Multicouche, suppresseurs et dépannage"
+  },
+  {
+    "id": "conduite-chariots-elevateurs",
+    "name": "Conduite des Chariots Élévateurs et Manutentions",
+    "filiere": "Industrie, Mécanique et Énergie",
+    "filiereId": "industrie",
+    "registrationFee": 30000,
+    "totalTuition": 220000,
+    "tranche1": 110000,
+    "tranche2": 70000,
+    "tranche3": 40000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Formation CACES / Cariste certifié sur engins réels"
+  },
+  {
+    "id": "mecatronique-automobile",
+    "name": "Mécatronique Automobile",
+    "filiere": "Industrie, Mécanique et Énergie",
+    "filiereId": "industrie",
+    "registrationFee": 30000,
+    "totalTuition": 220000,
+    "tranche1": 110000,
+    "tranche2": 70000,
+    "tranche3": 40000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Scanner de diagnostic multimarques, calculateurs ECU et capteurs"
+  },
+  {
+    "id": "mecanique-automobile",
+    "name": "Mécanique Automobile",
+    "filiere": "Industrie, Mécanique et Énergie",
+    "filiereId": "industrie",
+    "registrationFee": 25000,
+    "totalTuition": 190000,
+    "tranche1": 95000,
+    "tranche2": 60000,
+    "tranche3": 35000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Moteurs essence/diesel, distribution, embrayage et freinage"
+  },
+  {
+    "id": "energie-renouvelable",
+    "name": "Énergie Renouvelable",
+    "filiere": "Industrie, Mécanique et Énergie",
+    "filiereId": "industrie",
+    "registrationFee": 30000,
+    "totalTuition": 210000,
+    "tranche1": 105000,
+    "tranche2": 65000,
+    "tranche3": 40000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Dimensionnement photovoltaïque, hybridation et stockage lithium"
+  },
+  {
+    "id": "maintenance-systemes-solaires",
+    "name": "Maintenance des Systèmes Solaires",
+    "filiere": "Industrie, Mécanique et Énergie",
+    "filiereId": "industrie",
+    "registrationFee": 25000,
+    "totalTuition": 185000,
+    "tranche1": 95000,
+    "tranche2": 60000,
+    "tranche3": 30000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Installation sur toitures, onduleurs et parcs de batteries"
+  },
+  {
+    "id": "electrotechnique",
+    "name": "Électrotechnique",
+    "filiere": "Industrie, Mécanique et Énergie",
+    "filiereId": "industrie",
+    "registrationFee": 25000,
+    "totalTuition": 190000,
+    "tranche1": 95000,
+    "tranche2": 60000,
+    "tranche3": 35000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Câblage armoires industrielles, moteurs triphasés et automatismes"
+  },
+  {
+    "id": "froid-et-climatisation",
+    "name": "Froid et Climatisation",
+    "filiere": "Industrie, Mécanique et Énergie",
+    "filiereId": "industrie",
+    "registrationFee": 25000,
+    "totalTuition": 195000,
+    "tranche1": 100000,
+    "tranche2": 60000,
+    "tranche3": 35000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Climatiseurs split, chambres froides et fluides frigorigènes"
+  },
+  {
+    "id": "electronique",
+    "name": "Électronique",
+    "filiere": "Industrie, Mécanique et Énergie",
+    "filiereId": "industrie",
+    "registrationFee": 25000,
+    "totalTuition": 180000,
+    "tranche1": 90000,
+    "tranche2": 60000,
+    "tranche3": 30000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Dépannage cartes électroniques, microcontrôleurs et soudure SMD"
+  },
+  {
+    "id": "maintenance-industrielle",
+    "name": "Maintenance Industrielle",
+    "filiere": "Industrie, Mécanique et Énergie",
+    "filiereId": "industrie",
+    "registrationFee": 25000,
+    "totalTuition": 200000,
+    "tranche1": 100000,
+    "tranche2": 65000,
+    "tranche3": 35000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Maintenance préventive/corrective sur lignes de production d'usine"
+  },
+  {
+    "id": "genie-logiciel",
+    "name": "Génie Logiciel",
+    "filiere": "Informatique, Digital et Communication",
+    "filiereId": "informatique",
+    "registrationFee": 30000,
+    "totalTuition": 300000,
+    "tranche1": 150000,
+    "tranche2": 100000,
+    "tranche3": 50000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Développement Fullstack Web & Mobile (React, Node, TypeScript, SQL)"
+  },
+  {
+    "id": "reseaux-et-telecoms",
+    "name": "Réseaux & Télécoms",
+    "filiere": "Informatique, Digital et Communication",
+    "filiereId": "informatique",
+    "registrationFee": 30000,
+    "totalTuition": 280000,
+    "tranche1": 140000,
+    "tranche2": 90000,
+    "tranche3": 50000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Administration Cisco, routage, fibre optique et serveurs Linux"
+  },
+  {
+    "id": "cyber-securite",
+    "name": "Cyber-sécurité",
+    "filiere": "Informatique, Digital et Communication",
+    "filiereId": "informatique",
+    "registrationFee": 30000,
+    "totalTuition": 320000,
+    "tranche1": 160000,
+    "tranche2": 100000,
+    "tranche3": 60000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Audit de vulnérabilités, tests d'intrusion et sécurisation réseaux"
+  },
+  {
+    "id": "ia-et-big-data",
+    "name": "Intelligence Artificielle & Big Data",
+    "filiere": "Informatique, Digital et Communication",
+    "filiereId": "informatique",
+    "registrationFee": 30000,
+    "totalTuition": 320000,
+    "tranche1": 160000,
+    "tranche2": 100000,
+    "tranche3": 60000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Machine Learning, Python, analyse de données et modèles d'IA"
+  },
+  {
+    "id": "maintenance-informatique",
+    "name": "Maintenance Informatique",
+    "filiere": "Informatique, Digital et Communication",
+    "filiereId": "informatique",
+    "registrationFee": 25000,
+    "totalTuition": 190000,
+    "tranche1": 95000,
+    "tranche2": 60000,
+    "tranche3": 35000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Dépannage matériel PC/Mac, installation systèmes et réseaux locaux"
+  },
+  {
+    "id": "infographie-et-design",
+    "name": "Infographie & Design 2D/3D",
+    "filiere": "Informatique, Digital et Communication",
+    "filiereId": "informatique",
+    "registrationFee": 25000,
+    "totalTuition": 220000,
+    "tranche1": 110000,
+    "tranche2": 70000,
+    "tranche3": 40000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Suite Adobe Photoshop, Illustrator, After Effects et modélisation 3D"
+  },
+  {
+    "id": "marketing-digital",
+    "name": "Marketing Digital & Community Management",
+    "filiere": "Informatique, Digital et Communication",
+    "filiereId": "informatique",
+    "registrationFee": 25000,
+    "totalTuition": 210000,
+    "tranche1": 105000,
+    "tranche2": 65000,
+    "tranche3": 40000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Stratégie de contenu, publicités Meta/Google Ads et SEO"
+  },
+  {
+    "id": "secretariat-bureautique",
+    "name": "Secrétariat Bureautique",
+    "filiere": "Informatique, Digital et Communication",
+    "filiereId": "informatique",
+    "registrationFee": 20000,
+    "totalTuition": 160000,
+    "tranche1": 80000,
+    "tranche2": 50000,
+    "tranche3": 30000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Word, Excel avancé, PowerPoint, dactylographie et gestion d'accueil"
+  },
+  {
+    "id": "comptabilite-gestion",
+    "name": "Comptabilité & Gestion des Entreprises",
+    "filiere": "Administration, Commerce et Gestion",
+    "filiereId": "administration",
+    "registrationFee": 25000,
+    "totalTuition": 220000,
+    "tranche1": 110000,
+    "tranche2": 70000,
+    "tranche3": 40000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Comptabilité OHADA, fiscalité d'entreprise et logiciel Saari"
+  },
+  {
+    "id": "gestion-rh",
+    "name": "Gestion des Ressources Humaines",
+    "filiere": "Administration, Commerce et Gestion",
+    "filiereId": "administration",
+    "registrationFee": 25000,
+    "totalTuition": 220000,
+    "tranche1": 110000,
+    "tranche2": 70000,
+    "tranche3": 40000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Paie, droit du travail camerounais et gestion des carrières"
+  },
+  {
+    "id": "douane-et-transit",
+    "name": "Douane & Transit",
+    "filiere": "Administration, Commerce et Gestion",
+    "filiereId": "administration",
+    "registrationFee": 30000,
+    "totalTuition": 250000,
+    "tranche1": 125000,
+    "tranche2": 80000,
+    "tranche3": 45000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Procédures douanières Sydonia++, fret maritime portuaire et aérien"
+  },
+  {
+    "id": "logistique-et-transport",
+    "name": "Logistique & Transport",
+    "filiere": "Administration, Commerce et Gestion",
+    "filiereId": "administration",
+    "registrationFee": 25000,
+    "totalTuition": 230000,
+    "tranche1": 115000,
+    "tranche2": 75000,
+    "tranche3": 40000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Supply chain, gestion d'entrepôt et planification des expéditions"
+  },
+  {
+    "id": "banque-et-microfinance",
+    "name": "Banque & Microfinance",
+    "filiere": "Administration, Commerce et Gestion",
+    "filiereId": "administration",
+    "registrationFee": 25000,
+    "totalTuition": 230000,
+    "tranche1": 115000,
+    "tranche2": 75000,
+    "tranche3": 40000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Opérations de caisse, analyse de crédit et gestion de portefeuille"
+  },
+  {
+    "id": "commerce-international",
+    "name": "Commerce International",
+    "filiere": "Administration, Commerce et Gestion",
+    "filiereId": "administration",
+    "registrationFee": 25000,
+    "totalTuition": 240000,
+    "tranche1": 120000,
+    "tranche2": 80000,
+    "tranche3": 40000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Incoterms 2020, crédits documentaires et prospection export"
+  },
+  {
+    "id": "gestion-de-projets",
+    "name": "Gestion de Projets",
+    "filiere": "Administration, Commerce et Gestion",
+    "filiereId": "administration",
+    "registrationFee": 25000,
+    "totalTuition": 240000,
+    "tranche1": 120000,
+    "tranche2": 80000,
+    "tranche3": 40000,
+    "deadlines": {
+      "tranche1": "15 Octobre 2026",
+      "tranche2": "15 Janvier 2027",
+      "tranche3": "15 Avril 2027"
+    },
+    "notes": "Méthodes Agiles / Scrum, planification MS Project et budgets"
+  }
+]

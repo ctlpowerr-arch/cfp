@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Page d'Accueil Principale - CFP-ITMC Douala Logpom -->
+  <url>
+    <loc>https://cfp-itmc.com/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Formations & Catalogue Complet des 35 Spécialités DQP MINEFOP -->
+  <url>
+    <loc>https://cfp-itmc.com/formations</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Pôle Bâtiment & Travaux Publics -->
+  <url>
+    <loc>https://cfp-itmc.com/formations?filiere=batiment</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Pôle Industrie, Mécanique & Énergie -->
+  <url>
+    <loc>https://cfp-itmc.com/formations?filiere=industrie</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Pôle Informatique, Digital & Réseaux -->
+  <url>
+    <loc>https://cfp-itmc.com/formations?filiere=informatique</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Pôle Gestion, Commerce, Santé & Tertiaire -->
+  <url>
+    <loc>https://cfp-itmc.com/formations?filiere=administration</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- À propos de l'Institut CFP-ITMC (Accréditation MINEFOP, Campus, Équipe) -->
+  <url>
+    <loc>https://cfp-itmc.com/a-propos</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Actualités, Événements & Insertion Professionnelle au Cameroun -->
+  <url>
+    <loc>https://cfp-itmc.com/actualites</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Contact, Localisation Campus Logpom Bassong & Inscriptions -->
+  <url>
+    <loc>https://cfp-itmc.com/contact</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Portails et Espaces Connectés -->
+  <url>
+    <loc>https://cfp-itmc.com/login/teacher</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>

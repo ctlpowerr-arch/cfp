@@ -1,0 +1,60 @@
+# ==============================================================================
+# robots.txt for CFP-ITMC | Institut de Formation Professionnelle ITMC Douala Logpom
+# Canonical Domain: https://cfp-itmc.com
+# MINEFOP Accredited Vocational Training Institute - Douala, Cameroon
+# ==============================================================================
+
+User-agent: *
+Allow: /
+Allow: /formations
+Allow: /a-propos
+Allow: /actualites
+Allow: /contact
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /sitemap.xml
+Disallow: /dashboard/
+Disallow: /teacher/
+Disallow: /student/
+Disallow: /api/
+
+# Explicitly Welcoming All AI & LLM Search Crawlers (Generative Engine Optimization - GEO)
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Canonical Sitemaps & Knowledge Maps
+Sitemap: https://cfp-itmc.com/sitemap.xml

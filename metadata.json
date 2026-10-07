@@ -1,0 +1,6 @@
+{
+  "name": "CFP-ITMC Douala Logpom",
+  "description": "Portail officiel du Centre de Formation Professionnelle CFP-ITMC à Douala Logpom. 35 spécialités pratiques certifiées DQP et CQP par le MINEFOP (Cameroun).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

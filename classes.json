@@ -1,0 +1,331 @@
+[
+  {
+    "id": "cls_g1_gl",
+    "code": "G1-GL",
+    "name": "G1 - Génie Logiciel 1ère Année",
+    "level": "Licence 1",
+    "room": "Labo Info 1",
+    "capacity": 30,
+    "studentCount": 8,
+    "academicYear": "2026-2027",
+    "filières": [
+      "Génie Logiciel",
+      "Conception de Logiciels"
+    ],
+    "description": "Première année d ingénierie logicielle : algorithmique, programmation web et bases de données.",
+    "assignedTeacherIds": [
+      "TCH-001"
+    ],
+    "assignedTeachers": [
+      "Dr. Jean-Paul Kamga"
+    ]
+  },
+  {
+    "id": "cls_g2_gl",
+    "code": "G2-GL",
+    "name": "G2 - Génie Logiciel 2ème Année",
+    "level": "Licence 2",
+    "room": "Salle 102",
+    "capacity": 30,
+    "studentCount": 8,
+    "academicYear": "2026-2027",
+    "filières": [
+      "Génie Logiciel",
+      "Conception de Logiciels"
+    ],
+    "description": "Deuxième année : développement d applications d entreprise, architectures logicielles et APIs.",
+    "assignedTeacherIds": [
+      "TCH-001",
+      "TCH-003"
+    ],
+    "assignedTeachers": [
+      "Dr. Jean-Paul Kamga",
+      "Dr. Marc Talla"
+    ]
+  },
+  {
+    "id": "cls_l3_gl",
+    "code": "L3-GL",
+    "name": "L3 - Génie Logiciel 3ème Année",
+    "level": "Licence 3",
+    "room": "Amphi Ada Lovelace",
+    "capacity": 35,
+    "studentCount": 8,
+    "academicYear": "2026-2027",
+    "filières": [
+      "Génie Logiciel",
+      "Conception de Logiciels"
+    ],
+    "description": "Troisième année : projets de fin de cycle, microservices, cloud et sécurité logicielle.",
+    "assignedTeacherIds": [
+      "TCH-001",
+      "TCH-003"
+    ],
+    "assignedTeachers": [
+      "Dr. Jean-Paul Kamga",
+      "Dr. Marc Talla"
+    ]
+  },
+  {
+    "id": "cls_r1_rcs",
+    "code": "R1-RCS",
+    "name": "R1 - Cyber-sécurité & Réseaux 1ère Année",
+    "level": "Licence 1",
+    "room": "Labo Réseaux A",
+    "capacity": 25,
+    "studentCount": 8,
+    "academicYear": "2026-2027",
+    "filières": [
+      "Cyber-sécurité & Réseaux",
+      "Maintenance des Réseaux Informatiques",
+      "Télécommunication",
+      "Technique de Télésurveillance"
+    ],
+    "description": "Fondations des réseaux TCP/IP, câblage, routage et bases de la sécurité informatique.",
+    "assignedTeacherIds": [
+      "TCH-002"
+    ],
+    "assignedTeachers": [
+      "Prof. Diane Ebongue"
+    ]
+  },
+  {
+    "id": "cls_r2_rcs",
+    "code": "R2-RCS",
+    "name": "R2 - Cyber-sécurité & Réseaux 2ème Année",
+    "level": "Licence 2",
+    "room": "Labo Réseaux B",
+    "capacity": 25,
+    "studentCount": 8,
+    "academicYear": "2026-2027",
+    "filières": [
+      "Cyber-sécurité & Réseaux",
+      "Testeur d’intrusion (cybersécurité)",
+      "Maintenance des Réseaux Informatiques",
+      "Télécommunication"
+    ],
+    "description": "Administration avancée sous Linux/Windows, pare-feu, VPN et supervision réseau.",
+    "assignedTeacherIds": [
+      "TCH-002",
+      "TCH-003"
+    ],
+    "assignedTeachers": [
+      "Prof. Diane Ebongue",
+      "Dr. Marc Talla"
+    ]
+  },
+  {
+    "id": "cls_l3_rcs",
+    "code": "L3-RCS",
+    "name": "L3 - Cyber-sécurité & Réseaux 3ème Année",
+    "level": "Licence 3",
+    "room": "Amphi Ada Lovelace",
+    "capacity": 35,
+    "studentCount": 8,
+    "academicYear": "2026-2027",
+    "filières": [
+      "Cyber-sécurité & Réseaux",
+      "Testeur d’intrusion (cybersécurité)",
+      "Télécommunication",
+      "Technique de Télésurveillance"
+    ],
+    "description": "Sécurité offensive (pentesting), cryptographie avancée, SOC et audits de sécurité.",
+    "assignedTeacherIds": [
+      "TCH-002"
+    ],
+    "assignedTeachers": [
+      "Prof. Diane Ebongue"
+    ]
+  },
+  {
+    "id": "cls_d1_des",
+    "code": "D1-DES",
+    "name": "D1 - Infographie & UI/UX 1ère Année",
+    "level": "Licence 1",
+    "room": "Atelier Graphique 1",
+    "capacity": 25,
+    "studentCount": 8,
+    "academicYear": "2026-2027",
+    "filières": [
+      "Infographie & UI/UX Design",
+      "Infographie",
+      "Graphisme de Production"
+    ],
+    "description": "Création graphique vectorielle, retouche photo Photoshop/Illustrator et bases du design UI.",
+    "assignedTeacherIds": [
+      "TCH-004"
+    ],
+    "assignedTeachers": [
+      "Mme Sarah N'Dongo"
+    ]
+  },
+  {
+    "id": "cls_d2_des",
+    "code": "D2-DES",
+    "name": "D2 - Infographie & UI/UX 2ème Année",
+    "level": "Licence 2",
+    "room": "Atelier Graphique 2",
+    "capacity": 25,
+    "studentCount": 8,
+    "academicYear": "2026-2027",
+    "filières": [
+      "Infographie & UI/UX Design",
+      "Infographie",
+      "Graphisme de Production"
+    ],
+    "description": "Design systèmes Figma avancés, motion design After Effects et identité visuelle d entreprise.",
+    "assignedTeacherIds": [
+      "TCH-004"
+    ],
+    "assignedTeachers": [
+      "Mme Sarah N'Dongo"
+    ]
+  },
+  {
+    "id": "cls_c1_cmd",
+    "code": "C1-CMD",
+    "name": "C1 - Comptabilité & Gestion 1ère Année",
+    "level": "Licence 1",
+    "room": "Salle Compta 201",
+    "capacity": 25,
+    "studentCount": 8,
+    "academicYear": "2026-2027",
+    "filières": [
+      "Comptabilité & Marketing Digital",
+      "Comptabilité Informatisée et Gestion",
+      "Secrétariat Comptable",
+      "Caissier",
+      "Secrétariat Bureautique",
+      "Secrétariat Bureautique Bilingue"
+    ],
+    "description": "Comptabilité générale selon le système SYSCOHADA, fiscalité et outils bureautiques spécialisés.",
+    "assignedTeacherIds": [
+      "TCH-005"
+    ],
+    "assignedTeachers": [
+      "Dr. Alain Mbia"
+    ]
+  },
+  {
+    "id": "cls_c2_cmd",
+    "code": "C2-CMD",
+    "name": "C2 - Marketing Digital & Gestion 2ème Année",
+    "level": "Licence 2",
+    "room": "Salle Compta 202",
+    "capacity": 25,
+    "studentCount": 8,
+    "academicYear": "2026-2027",
+    "filières": [
+      "Comptabilité & Marketing Digital",
+      "Marketing Digital",
+      "Assistant de Direction",
+      "Télévendeur",
+      "Comptabilité Informatisée et Gestion"
+    ],
+    "description": "Stratégies d acquisition digitale, gestion de campagnes publicitaires et comptabilité de gestion.",
+    "assignedTeacherIds": [
+      "TCH-005"
+    ],
+    "assignedTeachers": [
+      "Dr. Alain Mbia"
+    ]
+  },
+  {
+    "id": "cls_b1_btp",
+    "code": "B1-BTP",
+    "name": "B1 - Bâtiment, Gros Œuvre & Plomberie 1ère Année",
+    "level": "DQP / Niveau 1",
+    "room": "Atelier BTP 1",
+    "capacity": 30,
+    "studentCount": 8,
+    "academicYear": "2026-2027",
+    "filières": [
+      "Maçonnerie Gros Œuvre",
+      "Carrelage – Bâtiment",
+      "Coffreur / Ferrailleur",
+      "Poseur de Pavés",
+      "Peinture Bâtiment",
+      "Plomberie"
+    ],
+    "description": "Formation pratique DQP en construction bâtiment, gros œuvre, plomberie sanitaire et finitions.",
+    "assignedTeacherIds": [
+      "TCH-001"
+    ],
+    "assignedTeachers": [
+      "Ing. Samuel Nlend"
+    ]
+  },
+  {
+    "id": "cls_b2_btp",
+    "code": "B2-BTP",
+    "name": "B2 - Tuyauterie, Soudure, Étanchéité & Finitions BTP",
+    "level": "DQP / Niveau 2",
+    "room": "Atelier Métallerie & BTP 2",
+    "capacity": 30,
+    "studentCount": 8,
+    "academicYear": "2026-2027",
+    "filières": [
+      "Tuyauterie",
+      "Métallerie-Soudure-Tuyauterie",
+      "Staff et Décoration",
+      "Étanchéité",
+      "Vitrerie Aluminium"
+    ],
+    "description": "Maîtrise avancée en tuyauterie industrielle, soudure homologuée, menuiserie aluminium et étanchéité.",
+    "assignedTeacherIds": [
+      "TCH-002"
+    ],
+    "assignedTeachers": [
+      "Ing. Samuel Nlend",
+      "M. Christian Essomba"
+    ]
+  },
+  {
+    "id": "cls_i1_ind",
+    "code": "I1-IND",
+    "name": "I1 - Électrotechnique, Froid & Énergies Solaire 1ère Année",
+    "level": "DQP / Niveau 1",
+    "room": "Labo Énergie & Froid 1",
+    "capacity": 30,
+    "studentCount": 8,
+    "academicYear": "2026-2027",
+    "filières": [
+      "Électrotechnique",
+      "Froid et Climatisation",
+      "Énergie Renouvelable",
+      "Maintenance des Systèmes Solaires",
+      "Informatique Industrielle"
+    ],
+    "description": "Installations électriques industrielles, systèmes photovoltaïques, froid commercial et automates.",
+    "assignedTeacherIds": [
+      "TCH-003"
+    ],
+    "assignedTeachers": [
+      "Dr. Marc Talla",
+      "Ing. Patrick Fopa"
+    ]
+  },
+  {
+    "id": "cls_i2_ind",
+    "code": "I2-IND",
+    "name": "I2 - Mécatronique Auto, Engins & Qualité Industrielle",
+    "level": "DQP / Niveau 2",
+    "room": "Hangar Mécanique & Logistique",
+    "capacity": 30,
+    "studentCount": 8,
+    "academicYear": "2026-2027",
+    "filières": [
+      "Mécatronique Automobile",
+      "Mécanique Automobile",
+      "Conduite des Chariots Élévateurs et Manutentions",
+      "Technicien Qualité"
+    ],
+    "description": "Diagnostic électronique automobile, maintenance moteurs, conduite d engins de manutention et QHSE.",
+    "assignedTeacherIds": [
+      "TCH-003"
+    ],
+    "assignedTeachers": [
+      "Ing. Patrick Fopa"
+    ]
+  }
+]

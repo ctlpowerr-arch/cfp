@@ -1,0 +1,468 @@
+[
+  {
+    "id": "mod_gl_001",
+    "name": "Algorithmique Avancée & Structures de Données",
+    "description": "Structures de données linéaires et arborescentes, graphes, algorithmes de tri et complexité.",
+    "classCode": "G1-GL",
+    "className": "G1 - Génie Logiciel 1ère Année",
+    "room": "Labo Info 1",
+    "specialty": "Génie Logiciel",
+    "progress": 88,
+    "startDate": "01 Sept 2026",
+    "lessons": [
+      {
+        "id": "les_gl_01",
+        "title": "Pointeurs, Adresses & Allocation Dynamique en C++",
+        "description": "Gestion manuelle de la mémoire heap/stack et pointeurs intelligents.",
+        "isSuspended": false,
+        "resources": [
+          {
+            "id": "res_gl_01_1",
+            "title": "Support de Cours - Pointeurs C++",
+            "type": "pdf",
+            "status": "active",
+            "date": "02 Sept 2026"
+          },
+          {
+            "id": "res_gl_01_2",
+            "title": "Vidéo Démo : Valgrind & Memory Leaks",
+            "type": "video",
+            "status": "active",
+            "date": "03 Sept 2026"
+          }
+        ],
+        "quizzes": [
+          {
+            "id": "quiz_gl_01",
+            "title": "Quiz Validation : Pointeurs & Mémoire",
+            "timer": 300,
+            "questions": [
+              {
+                "id": "q_gl_1",
+                "text": "Quelle est la différence entre new et malloc en C++ ?",
+                "type": "text",
+                "maxPoints": 10
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "les_gl_02",
+        "title": "Listes Chaînées, Piles et Files d Attente",
+        "description": "Implémentation modulaire de conteneurs séquentiels dynamiques.",
+        "isSuspended": false,
+        "resources": [
+          {
+            "id": "res_gl_02_1",
+            "title": "TD Corrigé - Listes Doublement Chaînées",
+            "type": "pdf",
+            "status": "active",
+            "date": "04 Sept 2026"
+          }
+        ],
+        "quizzes": []
+      }
+    ],
+    "teacherId": "TCH-001",
+    "teacherName": "Dr. Jean-Paul Kamga",
+    "teacherEmail": "jp.kamga@itmc-it.cm",
+    "academicYear": "2026-2027"
+  },
+  {
+    "id": "mod_gl_002",
+    "name": "Architecture MVC & Backend Node.js / Express",
+    "description": "Développement d APIs RESTful sécurisées, middlewares, ORM et authentification JWT.",
+    "classCode": "G2-GL",
+    "className": "G2 - Génie Logiciel 2ème Année",
+    "room": "Salle 102",
+    "specialty": "Génie Logiciel",
+    "progress": 85,
+    "startDate": "02 Sept 2026",
+    "lessons": [
+      {
+        "id": "les_gl_03",
+        "title": "Conception d Architecture RESTful & Bonnes Pratiques",
+        "description": "Routage, sérialisation JSON, status codes HTTP et validation des données entrantes.",
+        "isSuspended": false,
+        "resources": [
+          {
+            "id": "res_gl_03_1",
+            "title": "Guide Architectural REST API",
+            "type": "pdf",
+            "status": "active",
+            "date": "03 Sept 2026"
+          }
+        ],
+        "quizzes": []
+      }
+    ],
+    "teacherId": "TCH-001",
+    "teacherName": "Dr. Jean-Paul Kamga",
+    "teacherEmail": "jp.kamga@itmc-it.cm",
+    "academicYear": "2026-2027"
+  },
+  {
+    "id": "mod_gl_003",
+    "name": "Architectures Microservices & Conteneurisation Docker",
+    "description": "Conteneurisation, orchestration, API Gateway et communication asynchrone par messages.",
+    "classCode": "L3-GL",
+    "className": "L3 - Génie Logiciel 3ème Année",
+    "room": "Amphi Ada Lovelace",
+    "specialty": "Génie Logiciel",
+    "progress": 90,
+    "startDate": "01 Sept 2026",
+    "lessons": [
+      {
+        "id": "les_gl_04",
+        "title": "Dockerisation d Applications Multi-Conteneurs avec Docker Compose",
+        "description": "Création de Dockerfile multi-stage, réseaux virtuels et volumes persistants.",
+        "isSuspended": false,
+        "resources": [
+          {
+            "id": "res_gl_04_1",
+            "title": "Cheat Sheet Docker & Compose",
+            "type": "pdf",
+            "status": "active",
+            "date": "04 Sept 2026"
+          }
+        ],
+        "quizzes": []
+      }
+    ],
+    "teacherId": "TCH-001",
+    "teacherName": "Dr. Jean-Paul Kamga",
+    "teacherEmail": "jp.kamga@itmc-it.cm",
+    "academicYear": "2026-2027"
+  },
+  {
+    "id": "mod_rcs_001",
+    "name": "Architecture des Réseaux TCP/IP & Routage Cisco",
+    "description": "Modèle OSI, encapsulation de paquets, commutation Ethernet et routage inter-VLAN.",
+    "classCode": "R1-RCS",
+    "className": "R1 - Cyber-sécurité & Réseaux 1ère Année",
+    "room": "Labo Réseaux A",
+    "specialty": "Cyber-sécurité & Réseaux",
+    "progress": 82,
+    "startDate": "01 Sept 2026",
+    "lessons": [
+      {
+        "id": "les_rcs_01",
+        "title": "Adressage IPv4, Notations CIDR & Découpage en Sous-Réseaux",
+        "description": "Calcul mathématique de masques de sous-réseau et plans d adressage d entreprise.",
+        "isSuspended": false,
+        "resources": [
+          {
+            "id": "res_rcs_01_1",
+            "title": "Fascicule VLSM & Exercices Pratiques",
+            "type": "pdf",
+            "status": "active",
+            "date": "02 Sept 2026"
+          }
+        ],
+        "quizzes": []
+      }
+    ],
+    "teacherId": "TCH-002",
+    "teacherName": "Prof. Diane Ebongue",
+    "teacherEmail": "d.ebongue@itmc-it.cm",
+    "academicYear": "2026-2027"
+  },
+  {
+    "id": "mod_rcs_002",
+    "name": "Administration Linux & Sécurisation SSH",
+    "description": "Gestion des utilisateurs, permissions POSIX, automatisation Bash et durcissement système.",
+    "classCode": "R2-RCS",
+    "className": "R2 - Cyber-sécurité & Réseaux 2ème Année",
+    "room": "Labo Réseaux B",
+    "specialty": "Cyber-sécurité & Réseaux",
+    "progress": 84,
+    "startDate": "02 Sept 2026",
+    "lessons": [
+      {
+        "id": "les_rcs_02",
+        "title": "Durcissement du Démon OpenSSH & Clés Cryptographiques Ed25519",
+        "description": "Bannissement des mots de passe faibles, fail2ban et configuration de sshd_config.",
+        "isSuspended": false,
+        "resources": [
+          {
+            "id": "res_rcs_02_1",
+            "title": "Procédure Hardening SSH",
+            "type": "pdf",
+            "status": "active",
+            "date": "03 Sept 2026"
+          }
+        ],
+        "quizzes": []
+      }
+    ],
+    "teacherId": "TCH-002",
+    "teacherName": "Prof. Diane Ebongue",
+    "teacherEmail": "d.ebongue@itmc-it.cm",
+    "academicYear": "2026-2027"
+  },
+  {
+    "id": "mod_rcs_003",
+    "name": "Sécurité Offensive & Méthodologies de Pentesting OWASP",
+    "description": "Tests d intrusion éthiques, analyse de vulnérabilités, injection SQL et bypass XSS.",
+    "classCode": "L3-RCS",
+    "className": "L3 - Cyber-sécurité & Réseaux 3ème Année",
+    "room": "Labo Cyber-Défense",
+    "specialty": "Cyber-sécurité & Réseaux",
+    "progress": 80,
+    "startDate": "01 Sept 2026",
+    "lessons": [
+      {
+        "id": "les_rcs_03",
+        "title": "Méthodologie OWASP Top 10 & Analyse avec Burp Suite",
+        "description": "Interception de requêtes HTTP, analyse de paramètres et rapport d audit d intrusion.",
+        "isSuspended": false,
+        "resources": [
+          {
+            "id": "res_rcs_03_1",
+            "title": "Guide de Pentesting OWASP 2026",
+            "type": "pdf",
+            "status": "active",
+            "date": "04 Sept 2026"
+          }
+        ],
+        "quizzes": []
+      }
+    ],
+    "teacherId": "TCH-002",
+    "teacherName": "Prof. Diane Ebongue",
+    "teacherEmail": "d.ebongue@itmc-it.cm",
+    "academicYear": "2026-2027"
+  },
+  {
+    "id": "mod_talla_001",
+    "name": "Bases de Données Relationnelles & Modélisation Merise",
+    "description": "Conception conceptuelle MCD/MLD, optimisation de requêtes SQL et indexation avancée.",
+    "classCode": "G2-GL",
+    "className": "G2 - Génie Logiciel 2ème Année",
+    "room": "Salle 102",
+    "specialty": "Génie Logiciel",
+    "progress": 86,
+    "startDate": "02 Sept 2026",
+    "lessons": [
+      {
+        "id": "les_tal_01",
+        "title": "Normalisation des Relations (1NF, 2NF, 3NF, BCNF)",
+        "description": "Élimination des redondances et intégrité référentielle rigoureuse.",
+        "isSuspended": false,
+        "resources": [
+          {
+            "id": "res_tal_01",
+            "title": "Manuel de Modélisation Merise",
+            "type": "pdf",
+            "status": "active",
+            "date": "02 Sept 2026"
+          }
+        ],
+        "quizzes": []
+      }
+    ],
+    "teacherId": "TCH-003",
+    "teacherName": "Dr. Marc Talla",
+    "teacherEmail": "m.talla@itmc-it.cm",
+    "academicYear": "2026-2027"
+  },
+  {
+    "id": "mod_talla_002",
+    "name": "Sécurité Réseau Avancée : VPN IPsec & Filtrage avec iptables",
+    "description": "Tunnels sécurisés inter-sites, pare-feu avec Netfilter et segmentation DMZ.",
+    "classCode": "R2-RCS",
+    "className": "R2 - Cyber-sécurité & Réseaux 2ème Année",
+    "room": "Labo Réseaux B",
+    "specialty": "Cyber-sécurité & Réseaux",
+    "progress": 83,
+    "startDate": "03 Sept 2026",
+    "lessons": [
+      {
+        "id": "les_tal_02",
+        "title": "Mise en place de Tunnels VPN IPsec Site-à-Site",
+        "description": "Chiffrement IKEv2, clés pré-partagées et routage des paquets chiffrés.",
+        "isSuspended": false,
+        "resources": [
+          {
+            "id": "res_tal_02",
+            "title": "Guide Technique IPsec",
+            "type": "pdf",
+            "status": "active",
+            "date": "03 Sept 2026"
+          }
+        ],
+        "quizzes": []
+      }
+    ],
+    "teacherId": "TCH-003",
+    "teacherName": "Dr. Marc Talla",
+    "teacherEmail": "m.talla@itmc-it.cm",
+    "academicYear": "2026-2027"
+  },
+  {
+    "id": "mod_talla_003",
+    "name": "Systèmes Distribués & Pipelines CI/CD GitHub Actions",
+    "description": "Intégration continue, tests automatisés, déploiement conteneurisé et monitoring.",
+    "classCode": "L3-GL",
+    "className": "L3 - Génie Logiciel 3ème Année",
+    "room": "Amphi Ada Lovelace",
+    "specialty": "Génie Logiciel",
+    "progress": 89,
+    "startDate": "01 Sept 2026",
+    "lessons": [
+      {
+        "id": "les_tal_03",
+        "title": "Automatisation CI/CD avec GitHub Actions & Registres Docker",
+        "description": "Workflows YAML, secrets sécurisés et tests unitaires automatisés.",
+        "isSuspended": false,
+        "resources": [
+          {
+            "id": "res_tal_03",
+            "title": "Workflows CI/CD Pratiques",
+            "type": "pdf",
+            "status": "active",
+            "date": "04 Sept 2026"
+          }
+        ],
+        "quizzes": []
+      }
+    ],
+    "teacherId": "TCH-003",
+    "teacherName": "Dr. Marc Talla",
+    "teacherEmail": "m.talla@itmc-it.cm",
+    "academicYear": "2026-2027"
+  },
+  {
+    "id": "mod_des_001",
+    "name": "Théorie des Couleurs & Typographie Créative",
+    "description": "Psychologie de la couleur, hiérarchie typographique, composition spatiale et grilles suisses.",
+    "classCode": "D1-DES",
+    "className": "D1 - Infographie & UI/UX 1ère Année",
+    "room": "Atelier Créatif A",
+    "specialty": "Infographie & UI/UX Design",
+    "progress": 90,
+    "startDate": "01 Sept 2026",
+    "lessons": [
+      {
+        "id": "les_des_01",
+        "title": "Harmonies Chromatiques & Accessibilité WCAG",
+        "description": "Contraste de luminance, roues chromatiques et palettes de marque.",
+        "isSuspended": false,
+        "resources": [
+          {
+            "id": "res_des_01",
+            "title": "Guide des Couleurs & Contrastes",
+            "type": "pdf",
+            "status": "active",
+            "date": "02 Sept 2026"
+          }
+        ],
+        "quizzes": []
+      }
+    ],
+    "teacherId": "TCH-004",
+    "teacherName": "Mme Sarah N Dongo",
+    "teacherEmail": "s.ndongo@itmc-it.cm",
+    "academicYear": "2026-2027"
+  },
+  {
+    "id": "mod_des_002",
+    "name": "Prototypage Interactif & Design System sous Figma",
+    "description": "Composants auto-layout, variantes dynamiques, micro-interactions et handover développeur.",
+    "classCode": "D2-DES",
+    "className": "D2 - Infographie & UI/UX 2ème Année",
+    "room": "Atelier Créatif B",
+    "specialty": "Infographie & UI/UX Design",
+    "progress": 92,
+    "startDate": "02 Sept 2026",
+    "lessons": [
+      {
+        "id": "les_des_02",
+        "title": "Création d un Design System Modulaire avec Auto-Layout 5.0",
+        "description": "Tokens de design, typographie dynamique et bibliothèques d équipe.",
+        "isSuspended": false,
+        "resources": [
+          {
+            "id": "res_des_02",
+            "title": "Kit UI Figma Master",
+            "type": "pdf",
+            "status": "active",
+            "date": "03 Sept 2026"
+          }
+        ],
+        "quizzes": []
+      }
+    ],
+    "teacherId": "TCH-004",
+    "teacherName": "Mme Sarah N Dongo",
+    "teacherEmail": "s.ndongo@itmc-it.cm",
+    "academicYear": "2026-2027"
+  },
+  {
+    "id": "mod_cmd_001",
+    "name": "Comptabilité Générale SYSCOHADA : Le Bilan & Compte de Résultat",
+    "description": "Opérations courantes, écritures d inventaire, TVA, balance générale et états financiers.",
+    "classCode": "C1-CMD",
+    "className": "C1 - Comptabilité & Marketing 1ère Année",
+    "room": "Salle 201",
+    "specialty": "Comptabilité & Marketing Digital",
+    "progress": 80,
+    "startDate": "01 Sept 2026",
+    "lessons": [
+      {
+        "id": "les_cmd_01",
+        "title": "Mécanismes Fondamentaux de la Partie Double & Plan Comptable",
+        "description": "Débit/Crédit, structure des comptes OHADA et journal général.",
+        "isSuspended": false,
+        "resources": [
+          {
+            "id": "res_cmd_01",
+            "title": "Plan Comptable Général SYSCOHADA",
+            "type": "pdf",
+            "status": "active",
+            "date": "02 Sept 2026"
+          }
+        ],
+        "quizzes": []
+      }
+    ],
+    "teacherId": "TCH-005",
+    "teacherName": "Dr. Alain Mbia",
+    "teacherEmail": "a.mbia@itmc-it.cm",
+    "academicYear": "2026-2027"
+  },
+  {
+    "id": "mod_cmd_002",
+    "name": "Stratégies d Acquisition de Trafic & Campagnes Google Ads",
+    "description": "SEO technique, référencement payant SEA, tunnels de conversion et KPI de retour sur investissement.",
+    "classCode": "C2-CMD",
+    "className": "C2 - Comptabilité & Marketing 2ème Année",
+    "room": "Salle 202",
+    "specialty": "Comptabilité & Marketing Digital",
+    "progress": 85,
+    "startDate": "02 Sept 2026",
+    "lessons": [
+      {
+        "id": "les_cmd_02",
+        "title": "Structure de Campagne Search & Enchères Intelligentes",
+        "description": "Mots-clés pertinents, Quality Score et extensions d annonces performantes.",
+        "isSuspended": false,
+        "resources": [
+          {
+            "id": "res_cmd_02",
+            "title": "Guide SEA & Google Ads 2026",
+            "type": "pdf",
+            "status": "active",
+            "date": "03 Sept 2026"
+          }
+        ],
+        "quizzes": []
+      }
+    ],
+    "teacherId": "TCH-005",
+    "teacherName": "Dr. Alain Mbia",
+    "teacherEmail": "a.mbia@itmc-it.cm",
+    "academicYear": "2026-2027"
+  }
+]
