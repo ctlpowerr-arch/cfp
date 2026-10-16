@@ -56,7 +56,13 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
 export default function TeacherModules() {
-  const { teacher } = useOutletContext<{ teacher: any }>();
+  const { teacher: rawTeacher } = useOutletContext<{ teacher: any }>() || {};
+  const teacher = rawTeacher || {
+    id: "TCH-001",
+    name: "Dr. Jean-Paul Kamga",
+    email: "jp.kamga@itmc-it.cm",
+    specialty: "Génie Logiciel"
+  };
   const navigate = useNavigate();
   const [modules, setModules] = useState<any[]>([]);
   const [students, setStudents] = useState<any[]>([]);
@@ -124,7 +130,7 @@ export default function TeacherModules() {
 
       if (modRes.ok) {
         const relMods = await modRes.json();
-        const myMods = teacher.specialty ? relMods.filter((m: any) => m.specialty === teacher.specialty) : relMods;
+        const myMods = teacher?.specialty ? relMods.filter((m: any) => m.specialty === teacher.specialty) : relMods;
         setModules(myMods);
         // If viewing tracking modal, keep it updated
         if (viewingLessonTracking) {

@@ -79,33 +79,41 @@ const teacherNavGroups = [
 ];
 
 export default function TeacherLayout() {
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(() => {
-    try {
-      return localStorage.getItem('itmc_teacher_sidebar_collapsed') === 'true';
-    } catch {
-      return false;
-    }
-  });
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isNotifOpen, setIsNotifOpen] = useState(false);
   const [unreadNotifCount, setUnreadNotifCount] = useState(0);
-  const [teacher, setTeacher] = useState<any>(null);
+  const [teacher, setTeacher] = useState<any>(() => {
+    try {
+      const data = localStorage.getItem('teacherData');
+      if (data) return JSON.parse(data);
+    } catch {}
+    return {
+      id: "TCH-001",
+      name: "Dr. Jean-Paul Kamga",
+      email: "jp.kamga@itmc-it.cm",
+      function: "Chef de Département",
+      department: "Informatique",
+      mainSpecialty: "Génie Logiciel",
+      isTitulaire: true,
+      titulaireClasses: ["G1", "L3-GL"],
+      assignedClasses: ["G1", "L3-GL"],
+      promotions: ["G1", "L3-GL"],
+      specialties: ["Génie Logiciel", "Intelligence Artificielle", "Algorithmique"],
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jean",
+      status: "Actif"
+    };
+  });
   const [teachersList, setTeachersList] = useState<any[]>([]);
   const [customAvatar, setCustomAvatar] = useState<string | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
   const { user, logout } = useAuth();
 
-  const toggleSidebarCollapse = () => {
-    setIsSidebarCollapsed(prev => {
-      const next = !prev;
-      try {
-        localStorage.setItem('itmc_teacher_sidebar_collapsed', String(next));
-      } catch {}
-      return next;
-    });
-  };
+  useEffect(() => {
+    try {
+      localStorage.removeItem('itmc_teacher_sidebar_collapsed');
+    } catch {}
+  }, []);
 
   useEffect(() => {
     fetch('/api/teachers')
@@ -114,27 +122,38 @@ export default function TeacherLayout() {
         if (Array.isArray(teachers) && teachers.length > 0) {
           setTeachersList(teachers);
           const data = localStorage.getItem('teacherData');
+          let found: any = null;
           if (data) {
             try {
               const parsed = JSON.parse(data);
-              const found = teachers.find((t: any) => t.id === parsed.id || t.email === parsed.email);
-              if (found) {
-                setTeacher(found);
-                return;
-              }
+              found = teachers.find((t: any) => t.id === parsed.id || t.email === parsed.email);
             } catch (e) {
               console.error(e);
             }
           }
-          setTeacher(teachers[0]);
+          if (!found && user?.email) {
+            found = teachers.find((t: any) => t.email?.toLowerCase() === user.email.toLowerCase() || t.id === user.id);
+          }
+          const activeTeacher = found || teachers[0];
+          setTeacher(activeTeacher);
           if (user?.role !== 'admin') {
-            localStorage.setItem('teacherData', JSON.stringify(teachers[0]));
+            localStorage.setItem('teacherData', JSON.stringify(activeTeacher));
             localStorage.setItem('userRole', 'teacher');
           }
         }
       })
-      .catch(err => console.error("Failed to fetch teachers in layout", err));
-  }, [user?.role]);
+      .catch(err => {
+        console.warn("Failed to fetch teachers in layout, using local profile fallback", err);
+        if (user && user.role === 'teacher') {
+          setTeacher((prev: any) => ({
+            ...prev,
+            id: user.id || prev.id,
+            name: user.name || prev.name,
+            email: user.email || prev.email
+          }));
+        }
+      });
+  }, [user?.role, user?.email, user?.id]);
 
   useEffect(() => {
     if (!teacher?.id) return;
@@ -147,10 +166,27 @@ export default function TeacherLayout() {
     return () => window.removeEventListener('avatarChanged', handleAvatarUpdate);
   }, [teacher?.id]);
 
-  const displayTeacher = teacher ? {
-    ...teacher,
-    avatar: customAvatar || teacher.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${teacher.name || 'Teacher'}`
-  } : null;
+  const DEFAULT_TEACHER_FALLBACK = {
+    id: "TCH-001",
+    name: "Dr. Jean-Paul Kamga",
+    email: "jp.kamga@itmc-it.cm",
+    function: "Chef de Département & Formateur",
+    department: "Informatique & BTP",
+    mainSpecialty: "Génie Logiciel",
+    isTitulaire: true,
+    titulaireClasses: ["G1", "L3-GL"],
+    assignedClasses: ["G1", "L3-GL"],
+    promotions: ["G1", "L3-GL"],
+    specialties: ["Génie Logiciel", "Intelligence Artificielle", "Algorithmique"],
+    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jean",
+    status: "Actif"
+  };
+
+  const displayTeacher = {
+    ...DEFAULT_TEACHER_FALLBACK,
+    ...(teacher || {}),
+    avatar: customAvatar || teacher?.avatar || `https://api.dicebear.com/7.x/avataaars/svg?seed=${teacher?.name || 'Jean'}`
+  };
 
   useEffect(() => {
     if (!teacher) return;
@@ -189,53 +225,29 @@ export default function TeacherLayout() {
 
   return (
     <div className="flex h-screen bg-slate-50/70 dark:bg-slate-950 overflow-hidden font-sans">
-      {/* Desktop Retractable Sidebar */}
+      {/* Desktop Permanent Normal Sidebar (Non-Rétractable) */}
       <aside 
-        className={cn(
-          "hidden lg:flex flex-col h-full overflow-y-auto custom-scrollbar bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-r border-slate-200/80 dark:border-slate-800/80 relative z-40 shrink-0 pb-6 shadow-sm transition-all duration-300 ease-in-out select-none",
-          isSidebarCollapsed ? "w-[76px]" : "w-72"
-        )}
+        className="hidden lg:flex flex-col h-full overflow-y-auto custom-scrollbar bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-r border-slate-200/80 dark:border-slate-800/80 relative z-40 shrink-0 pb-6 shadow-sm select-none w-72"
       >
-        <div className={cn("pb-2 transition-all duration-300", isSidebarCollapsed ? "p-3" : "p-4")}>
-          {/* Logo Header & Retract Button */}
-          <div className={cn(
-            "flex items-center mb-5 rounded-2xl bg-slate-50/90 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-800 transition-all",
-            isSidebarCollapsed ? "p-2 justify-center flex-col gap-2" : "p-2.5 justify-between gap-2"
-          )}>
+        <div className="p-4 pb-2">
+          {/* Logo Header */}
+          <div className="flex items-center mb-5 rounded-2xl bg-slate-50/90 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-800 p-2.5 justify-between gap-2">
             <div className="flex items-center gap-2.5 min-w-0">
               <AppLogo size="sm" variant="mark" className="shrink-0" />
-              {!isSidebarCollapsed && (
-                <div className="min-w-0">
-                  <div className="flex items-center gap-1.5">
-                    <h1 className="text-sm font-black text-slate-900 dark:text-white tracking-tight">CFP-<span className="text-blue-600">ITMC</span></h1>
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  </div>
-                  <p className="text-[9px] font-bold text-slate-500 dark:text-slate-400 truncate">
-                    Espace Enseignant / Formateur
-                  </p>
+              <div className="min-w-0">
+                <div className="flex items-center gap-1.5">
+                  <h1 className="text-sm font-black text-slate-900 dark:text-white tracking-tight">CFP-<span className="text-blue-600">ITMC</span></h1>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 </div>
-              )}
+                <p className="text-[9px] font-bold text-slate-500 dark:text-slate-400 truncate">
+                  Espace Enseignant / Formateur
+                </p>
+              </div>
             </div>
-
-            {/* Desktop Retract / Expand Button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleSidebarCollapse}
-              className="h-7 w-7 rounded-xl text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-slate-700 shrink-0 transition-all cursor-pointer"
-              title={isSidebarCollapsed ? "Déplier la barre de navigation" : "Rétracter la barre de navigation"}
-              aria-label={isSidebarCollapsed ? "Déplier la navigation" : "Rétracter la navigation"}
-            >
-              {isSidebarCollapsed ? (
-                <ChevronRight className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-              ) : (
-                <ChevronLeft className="w-4 h-4" />
-              )}
-            </Button>
           </div>
 
           {/* Teacher Selector if Multiple available */}
-          {!isSidebarCollapsed && teachersList.length > 1 && (
+          {teachersList.length > 1 && (
             <div className="mb-4 px-1">
               <label className="text-[9px] font-black uppercase tracking-wider text-slate-400 block mb-1">
                 Profil Formateur Actif :
@@ -261,16 +273,12 @@ export default function TeacherLayout() {
 
               return (
                 <div key={grp.group} className="space-y-1">
-                  {!isSidebarCollapsed ? (
-                    <div className="flex items-center gap-1.5 px-3 py-1 mb-1">
-                      <GroupIcon className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 opacity-75" />
-                      <p className="text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                        {grp.group}
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="my-2 border-t border-slate-100 dark:border-slate-800/80 mx-2" />
-                  )}
+                  <div className="flex items-center gap-1.5 px-3 py-1 mb-1">
+                    <GroupIcon className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 opacity-75" />
+                    <p className="text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                      {grp.group}
+                    </p>
+                  </div>
                   {grp.items.map((item) => {
                     const isActive = location.pathname === item.path;
                     const Icon = item.icon;
@@ -278,26 +286,22 @@ export default function TeacherLayout() {
                       <Link
                         key={item.path}
                         to={item.path}
-                        title={isSidebarCollapsed ? `${item.label}${item.badge ? ` (${item.badge})` : ''}` : undefined}
                         className={cn(
-                          "flex items-center rounded-2xl transition-all duration-200 group relative text-xs font-bold select-none cursor-pointer",
-                          isSidebarCollapsed 
-                            ? "justify-center p-2.5 h-11 w-11 mx-auto" 
-                            : "justify-between px-3.5 py-2.5",
+                          "flex items-center rounded-2xl transition-all duration-200 group relative text-xs font-bold select-none cursor-pointer justify-between px-3.5 py-2.5",
                           isActive 
                             ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-md shadow-slate-900/10 ring-1 ring-slate-900/5 dark:ring-white/10" 
                             : "text-slate-600 dark:text-slate-400 hover:bg-slate-100/90 dark:hover:bg-slate-800/80 hover:text-slate-900 dark:hover:text-white"
                         )}
                       >
-                        <div className={cn("flex items-center", isSidebarCollapsed ? "justify-center" : "gap-3")}>
+                        <div className="flex items-center gap-3">
                           <Icon className={cn(
                             "w-4 h-4 shrink-0 transition-transform group-hover:scale-110", 
                             isActive ? "text-blue-400 dark:text-blue-600 stroke-[2.5]" : "text-slate-400 group-hover:text-blue-600"
                           )} />
-                          {!isSidebarCollapsed && <span className="tracking-tight">{item.label}</span>}
+                          <span className="tracking-tight">{item.label}</span>
                         </div>
                         
-                        {!isSidebarCollapsed && item.badge && (
+                        {item.badge && (
                           <span className={cn(
                             "text-[9px] px-2 py-0.5 rounded-lg font-black shrink-0 uppercase tracking-wider",
                             isActive 
@@ -306,10 +310,6 @@ export default function TeacherLayout() {
                           )}>
                             {item.badge}
                           </span>
-                        )}
-
-                        {isSidebarCollapsed && item.badge && (
-                          <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-blue-600 ring-2 ring-white dark:ring-slate-900" />
                         )}
                       </Link>
                     );
@@ -322,39 +322,26 @@ export default function TeacherLayout() {
 
         {/* User Card in bottom Sidebar */}
         <div className="mt-auto p-3 pt-2 border-t border-slate-100 dark:border-slate-800">
-          {!isSidebarCollapsed ? (
-            <div className="p-3 rounded-2xl bg-slate-50/90 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-2 mb-2">
-              <div className="flex items-center gap-2.5 min-w-0">
-                <Avatar className="h-8 w-8 rounded-xl ring-2 ring-blue-500/20 shrink-0">
-                  <AvatarImage src={displayTeacher?.avatar} />
-                  <AvatarFallback>ENS</AvatarFallback>
-                </Avatar>
-                <div className="min-w-0 truncate">
-                  <p className="text-xs font-bold text-slate-900 dark:text-white truncate">{displayTeacher?.name || "Enseignant ITMC"}</p>
-                  <p className="text-[10px] text-emerald-600 font-semibold truncate">{displayTeacher?.department || "Formateur DQP"}</p>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="flex justify-center mb-2">
-              <Avatar className="h-9 w-9 rounded-xl ring-2 ring-blue-500/20" title={displayTeacher?.name}>
+          <div className="p-3 rounded-2xl bg-slate-50/90 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-2 mb-2">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <Avatar className="h-8 w-8 rounded-xl ring-2 ring-blue-500/20 shrink-0">
                 <AvatarImage src={displayTeacher?.avatar} />
                 <AvatarFallback>ENS</AvatarFallback>
               </Avatar>
+              <div className="min-w-0 truncate">
+                <p className="text-xs font-bold text-slate-900 dark:text-white truncate">{displayTeacher?.name || "Enseignant ITMC"}</p>
+                <p className="text-[10px] text-emerald-600 font-semibold truncate">{displayTeacher?.department || "Formateur DQP"}</p>
+              </div>
             </div>
-          )}
+          </div>
 
           <Button 
             onClick={handleLogout}
             variant="ghost" 
-            title={isSidebarCollapsed ? "Déconnexion" : undefined}
-            className={cn(
-              "rounded-xl text-slate-500 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/20 font-bold transition-colors text-xs cursor-pointer",
-              isSidebarCollapsed ? "w-11 h-11 mx-auto p-0 flex items-center justify-center" : "w-full justify-start gap-2.5 px-3 py-2"
-            )}
+            className="rounded-xl text-slate-500 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/20 font-bold transition-colors text-xs cursor-pointer w-full justify-start gap-2.5 px-3 py-2"
           >
             <LogOut className="w-4 h-4 shrink-0" />
-            {!isSidebarCollapsed && <span>Déconnexion</span>}
+            <span>Déconnexion</span>
           </Button>
         </div>
       </aside>
@@ -373,22 +360,6 @@ export default function TeacherLayout() {
               aria-label="Ouvrir le menu"
             >
               <Menu className="w-5 h-5" />
-            </Button>
-
-            {/* Desktop Quick Retract/Expand Toggle Button in Header */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleSidebarCollapse}
-              className="hidden lg:flex rounded-xl h-9 w-9 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
-              title={isSidebarCollapsed ? "Déplier la barre de navigation" : "Rétracter la barre de navigation"}
-              aria-label="Toggle navigation"
-            >
-              {isSidebarCollapsed ? (
-                <PanelLeftOpen className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-              ) : (
-                <PanelLeftClose className="w-4 h-4" />
-              )}
             </Button>
 
             <div className="relative hidden sm:block">

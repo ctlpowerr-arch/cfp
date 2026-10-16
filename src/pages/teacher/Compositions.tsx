@@ -112,7 +112,14 @@ interface Composition {
 }
 
 export default function TeacherCompositions() {
-  const { teacher } = useOutletContext<{ teacher: any }>();
+  const { teacher: rawTeacher } = useOutletContext<{ teacher: any }>() || {};
+  const teacher = rawTeacher || {
+    id: "TCH-001",
+    name: "Dr. Jean-Paul Kamga",
+    email: "jp.kamga@itmc-it.cm",
+    assignedClasses: ["G1", "L3-GL"],
+    specialty: "Génie Logiciel"
+  };
   const { selectedYear } = useAcademicYear();
   const [compositions, setCompositions] = useState<Composition[]>([]);
   const [normales, setNormales] = useState<any[]>([]);
@@ -346,7 +353,7 @@ export default function TeacherCompositions() {
 
       setCompositions(Array.isArray(compRes) ? compRes : []);
       setNormales(Array.isArray(nmRes) ? nmRes : []);
-      setStudents(Array.isArray(studRes) ? (teacher.specialty ? studRes.filter(s => s.specialty === teacher.specialty) : studRes) : []);
+      setStudents(Array.isArray(studRes) ? (teacher?.specialty ? studRes.filter(s => s.specialty === teacher.specialty) : studRes) : []);
       setModules(Array.isArray(modRes) ? modRes : []);
     } catch (e) {
       console.error("Failed to load compositions and normales", e);
@@ -443,7 +450,7 @@ export default function TeacherCompositions() {
         maxImageSizeMb: 4,
         maxPdfSizeMb: 3,
         grades: selectedGrades,
-        specialty: teacher.specialty || ''
+        specialty: teacher?.specialty || ''
       };
 
       const res = await fetch('/api/compositions', {

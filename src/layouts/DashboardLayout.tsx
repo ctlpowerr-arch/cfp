@@ -107,14 +107,6 @@ const navGroups = [
 ];
 
 export default function DashboardLayout() {
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(() => {
-    try {
-      return localStorage.getItem('itmc_dashboard_sidebar_collapsed') === 'true';
-    } catch {
-      return false;
-    }
-  });
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [showMustChangeModal, setShowMustChangeModal] = useState(false);
@@ -128,6 +120,12 @@ export default function DashboardLayout() {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
   const { theme, toggleTheme, setLightMode, setDarkMode, isDark } = useTheme();
+
+  useEffect(() => {
+    try {
+      localStorage.removeItem('itmc_dashboard_sidebar_collapsed');
+    } catch {}
+  }, []);
 
   const fetchUnreadAdminCount = () => {
     fetch('/api/notifications')
@@ -168,15 +166,6 @@ export default function DashboardLayout() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const toggleSidebarCollapse = () => {
-    setIsSidebarCollapsed(prev => {
-      const next = !prev;
-      try {
-        localStorage.setItem('itmc_dashboard_sidebar_collapsed', String(next));
-      } catch {}
-      return next;
-    });
-  };
 
   useEffect(() => {
     if (user && (user as any).mustChangePassword === true) {
@@ -250,24 +239,22 @@ export default function DashboardLayout() {
       isDark ? "bg-[#060913] text-slate-100 dark" : "bg-[#F4F6FB] text-slate-900"
     )}>
       
-      {/* ================= DESKTOP RETRACTABLE SIDEBAR ================= */}
+      {/* ================= DESKTOP PERMANENT NORMAL SIDEBAR (NON-RÉRACTABLE) ================= */}
       <aside 
         className={cn(
-          "hidden lg:flex flex-col h-full overflow-y-auto custom-scrollbar relative z-40 shrink-0 select-none transition-all duration-300 ease-in-out border-r",
+          "hidden lg:flex flex-col h-full overflow-y-auto custom-scrollbar relative z-40 shrink-0 select-none border-r w-72",
           isDark 
             ? "bg-[#0A0F1E] border-slate-800/80 shadow-[4px_0_24px_rgba(0,0,0,0.5)]" 
-            : "bg-white border-slate-200/90 shadow-[4px_0_24px_rgba(0,0,0,0.03)]",
-          isSidebarCollapsed ? "w-[80px]" : "w-72"
+            : "bg-white border-slate-200/90 shadow-[4px_0_24px_rgba(0,0,0,0.03)]"
         )}
       >
         {/* Top Brand Header */}
-        <div className={cn("p-4 pb-2 transition-all duration-300", isSidebarCollapsed && "px-2.5")}>
+        <div className="p-4 pb-2">
           <div className={cn(
-            "flex items-center rounded-2xl border transition-all duration-200",
+            "flex items-center rounded-2xl border p-2.5 justify-between gap-2",
             isDark 
               ? "bg-[#0F172E] border-slate-800/90 shadow-inner" 
-              : "bg-gradient-to-r from-slate-50 via-blue-50/40 to-slate-50 border-slate-200/90 shadow-xs",
-            isSidebarCollapsed ? "p-2 justify-center flex-col gap-2" : "p-2.5 justify-between gap-2"
+              : "bg-gradient-to-r from-slate-50 via-blue-50/40 to-slate-50 border-slate-200/90 shadow-xs"
           )}>
             {/* Logo Badge */}
             <div className="flex items-center gap-2.5 min-w-0">
@@ -279,40 +266,18 @@ export default function DashboardLayout() {
                 />
               </div>
 
-              {!isSidebarCollapsed && (
-                <div className="min-w-0">
-                  <div className="flex items-center gap-1.5">
-                    <h1 className={cn("text-sm font-black tracking-tight", isDark ? "text-white" : "text-slate-950")}>
-                      CFP-<span className="text-blue-600">ITMC</span>
-                    </h1>
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-                  </div>
-                  <p className={cn("text-[10px] font-bold truncate tracking-tight", isDark ? "text-slate-400" : "text-slate-600")}>
-                    {user?.role === 'admin' ? "Super Administration" : "Espace Secrétariat"}
-                  </p>
+              <div className="min-w-0">
+                <div className="flex items-center gap-1.5">
+                  <h1 className={cn("text-sm font-black tracking-tight", isDark ? "text-white" : "text-slate-950")}>
+                    CFP-<span className="text-blue-600">ITMC</span>
+                  </h1>
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
                 </div>
-              )}
+                <p className={cn("text-[10px] font-bold truncate tracking-tight", isDark ? "text-slate-400" : "text-slate-600")}>
+                  {user?.role === 'admin' ? "Super Administration" : "Espace Secrétariat"}
+                </p>
+              </div>
             </div>
-
-            {/* Collapse Toggle */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleSidebarCollapse}
-              className={cn(
-                "h-7 w-7 rounded-lg shrink-0 transition-all cursor-pointer shadow-xs",
-                isDark 
-                  ? "text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-700/60" 
-                  : "text-slate-700 hover:text-blue-600 hover:bg-white border border-slate-200/90 bg-white/70"
-              )}
-              title={isSidebarCollapsed ? "Déplier la navigation" : "Rétracter la navigation"}
-            >
-              {isSidebarCollapsed ? (
-                <ChevronRight className="w-4 h-4 text-blue-600" />
-              ) : (
-                <ChevronLeft className="w-4 h-4" />
-              )}
-            </Button>
           </div>
         </div>
 
@@ -325,19 +290,15 @@ export default function DashboardLayout() {
 
             return (
               <div key={grp.group} className="space-y-1">
-                {!isSidebarCollapsed ? (
-                  <div className="flex items-center gap-2 px-3 py-1 mb-1">
-                    <GroupIcon className={cn("w-3.5 h-3.5 shrink-0", grp.accentColor)} />
-                    <p className={cn(
-                      "text-[10px] font-black uppercase tracking-wider",
-                      isDark ? "text-slate-500" : "text-slate-500"
-                    )}>
-                      {grp.group}
-                    </p>
-                  </div>
-                ) : (
-                  <div className={cn("my-2 border-t mx-2", isDark ? "border-slate-800/80" : "border-slate-200/90")} />
-                )}
+                <div className="flex items-center gap-2 px-3 py-1 mb-1">
+                  <GroupIcon className={cn("w-3.5 h-3.5 shrink-0", grp.accentColor)} />
+                  <p className={cn(
+                    "text-[10px] font-black uppercase tracking-wider",
+                    isDark ? "text-slate-500" : "text-slate-500"
+                  )}>
+                    {grp.group}
+                  </p>
+                </div>
 
                 {visibleItems.map((item) => {
                   const isActive = location.pathname === item.href;
@@ -347,12 +308,8 @@ export default function DashboardLayout() {
                     <Link
                       key={item.href}
                       to={item.href}
-                      title={isSidebarCollapsed ? `${item.title}${item.badge ? ` (${item.badge})` : ''}` : undefined}
                       className={cn(
-                        "flex items-center rounded-xl transition-all duration-200 group relative text-xs font-bold select-none cursor-pointer",
-                        isSidebarCollapsed 
-                          ? "justify-center p-2.5 h-11 w-11 mx-auto" 
-                          : "justify-between px-3.5 py-2.5",
+                        "flex items-center rounded-xl transition-all duration-200 group relative text-xs font-bold select-none cursor-pointer justify-between px-3.5 py-2.5",
                         isActive 
                           ? isDark
                             ? "bg-blue-600/20 text-blue-400 border border-blue-500/40 shadow-md shadow-blue-500/10 font-black"
@@ -362,24 +319,22 @@ export default function DashboardLayout() {
                             : "text-slate-700 hover:text-slate-950 hover:bg-slate-100/90 border border-transparent hover:border-slate-200/80"
                       )}
                     >
-                      <div className={cn("flex items-center", isSidebarCollapsed ? "justify-center" : "gap-3")}>
+                      <div className="flex items-center gap-3">
                         <Icon className={cn(
                           "w-4 h-4 shrink-0 transition-transform group-hover:scale-110", 
                           isActive 
                             ? isDark ? "text-blue-400 stroke-[2.5]" : "text-white stroke-[2.5]" 
                             : isDark ? "text-slate-400 group-hover:text-blue-400" : "text-slate-500 group-hover:text-blue-600 stroke-[2]"
                         )} />
-                        {!isSidebarCollapsed && (
-                          <span className={cn(
-                            "tracking-tight transition-colors",
-                            isActive ? (isDark ? "text-white font-black" : "text-white font-black") : "font-bold"
-                          )}>
-                            {item.title}
-                          </span>
-                        )}
+                        <span className={cn(
+                          "tracking-tight transition-colors",
+                          isActive ? "text-white font-black" : "font-bold"
+                        )}>
+                          {item.title}
+                        </span>
                       </div>
                       
-                      {!isSidebarCollapsed && item.badge && (
+                      {item.badge && (
                         <span className={cn(
                           "text-[9px] px-2 py-0.5 rounded-md font-extrabold shrink-0 uppercase tracking-wider",
                           isActive 
@@ -392,13 +347,6 @@ export default function DashboardLayout() {
                         )}>
                           {item.badge}
                         </span>
-                      )}
-
-                      {isSidebarCollapsed && item.badge && (
-                        <span className={cn(
-                          "absolute top-1.5 right-1.5 w-2.5 h-2.5 rounded-full bg-blue-600 ring-2",
-                          isDark ? "ring-[#0A0F1E]" : "ring-white"
-                        )} />
                       )}
                     </Link>
                   );
@@ -413,86 +361,58 @@ export default function DashboardLayout() {
           "mt-auto p-3 border-t",
           isDark ? "border-slate-800/80 bg-[#080D1B]" : "border-slate-200/90 bg-slate-50/90"
         )}>
-          {!isSidebarCollapsed ? (
-            <div className="space-y-2 mb-1">
-              <div className={cn(
-                "p-2.5 rounded-xl border flex items-center justify-between gap-2 shadow-xs",
-                isDark ? "bg-[#0F172E] border-slate-800" : "bg-white border-slate-200/90"
-              )}>
-                <div className="flex items-center gap-2 min-w-0">
-                  <Avatar className="h-8 w-8 rounded-lg ring-1 ring-blue-500/30 shrink-0 shadow-2xs">
-                    <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.name || 'AdminITMC'}`} />
-                    <AvatarFallback className="bg-blue-600 text-white font-bold text-xs">AD</AvatarFallback>
-                  </Avatar>
-                  <div className="min-w-0 truncate">
-                    <p className={cn("text-xs font-black truncate", isDark ? "text-white" : "text-slate-950")}>
-                      {user?.name || "Admin ITMC"}
-                    </p>
-                    <p className={cn("text-[10px] font-bold truncate flex items-center gap-1", isDark ? "text-emerald-400" : "text-emerald-600")}>
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                      En ligne • Douala
-                    </p>
-                  </div>
+          <div className="space-y-2 mb-1">
+            <div className={cn(
+              "p-2.5 rounded-xl border flex items-center justify-between gap-2 shadow-xs",
+              isDark ? "bg-[#0F172E] border-slate-800" : "bg-white border-slate-200/90"
+            )}>
+              <div className="flex items-center gap-2 min-w-0">
+                <Avatar className="h-8 w-8 rounded-lg ring-1 ring-blue-500/30 shrink-0 shadow-2xs">
+                  <AvatarImage src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.name || 'AdminITMC'}`} />
+                  <AvatarFallback className="bg-blue-600 text-white font-bold text-xs">AD</AvatarFallback>
+                </Avatar>
+                <div className="min-w-0 truncate">
+                  <p className={cn("text-xs font-black truncate", isDark ? "text-white" : "text-slate-950")}>
+                    {user?.name || "Admin ITMC"}
+                  </p>
+                  <p className={cn("text-[10px] font-bold truncate flex items-center gap-1", isDark ? "text-emerald-400" : "text-emerald-600")}>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    En ligne • Douala
+                  </p>
                 </div>
-
-                {/* Quick theme toggle */}
-                <button
-                  type="button"
-                  onClick={toggleTheme}
-                  className={cn(
-                    "w-7 h-7 rounded-lg flex items-center justify-center transition-colors cursor-pointer shrink-0 border",
-                    isDark 
-                      ? "text-amber-400 bg-slate-800/90 border-slate-700 hover:bg-slate-700" 
-                      : "text-slate-700 bg-slate-100/90 border-slate-200/80 hover:bg-slate-200 hover:text-blue-600"
-                  )}
-                  title={isDark ? "Passer en mode clair" : "Passer en mode sombre"}
-                >
-                  {isDark ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
-                </button>
               </div>
 
-              {/* Secure Logout Button */}
-              <Button 
-                onClick={handleLogout}
-                variant="ghost" 
-                className={cn(
-                  "w-full justify-start gap-2 px-3 py-2 rounded-xl font-bold text-xs transition-colors cursor-pointer",
-                  isDark 
-                    ? "text-rose-400 hover:text-rose-300 hover:bg-rose-950/30 border border-transparent hover:border-rose-900/40"
-                    : "text-rose-600 hover:text-rose-700 hover:bg-rose-50 border border-transparent hover:border-rose-200"
-                )}
-              >
-                <LogOut className="w-3.5 h-3.5 shrink-0" />
-                <span>Déconnexion Sécurisée</span>
-              </Button>
-            </div>
-          ) : (
-            <div className="flex flex-col items-center gap-2">
+              {/* Quick theme toggle */}
               <button
                 type="button"
                 onClick={toggleTheme}
                 className={cn(
-                  "w-9 h-9 rounded-xl flex items-center justify-center transition-colors cursor-pointer shadow-xs",
-                  isDark ? "text-amber-400 bg-slate-900 hover:bg-slate-800 border border-slate-800" : "text-slate-700 bg-white border border-slate-200 hover:bg-slate-100 hover:text-blue-600"
+                  "w-7 h-7 rounded-lg flex items-center justify-center transition-colors cursor-pointer shrink-0 border",
+                  isDark 
+                    ? "text-amber-400 bg-slate-800/90 border-slate-700 hover:bg-slate-700" 
+                    : "text-slate-700 bg-slate-100/90 border-slate-200/80 hover:bg-slate-200 hover:text-blue-600"
                 )}
                 title={isDark ? "Passer en mode clair" : "Passer en mode sombre"}
               >
-                {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4 text-blue-600" />}
-              </button>
-
-              <button
-                type="button"
-                onClick={handleLogout}
-                className={cn(
-                  "w-9 h-9 rounded-xl flex items-center justify-center transition-colors cursor-pointer shadow-xs",
-                  isDark ? "text-rose-400 hover:text-rose-300 hover:bg-rose-950/30 border border-slate-800" : "text-rose-600 bg-white border border-slate-200 hover:bg-rose-50"
-                )}
-                title="Déconnexion"
-              >
-                <LogOut className="w-4 h-4" />
+                {isDark ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
               </button>
             </div>
-          )}
+
+            {/* Secure Logout Button */}
+            <Button 
+              onClick={handleLogout}
+              variant="ghost" 
+              className={cn(
+                "w-full justify-start gap-2 px-3 py-2 rounded-xl font-bold text-xs transition-colors cursor-pointer",
+                isDark 
+                  ? "text-rose-400 hover:text-rose-300 hover:bg-rose-950/30 border border-transparent hover:border-rose-900/40"
+                  : "text-rose-600 hover:text-rose-700 hover:bg-rose-50 border border-transparent hover:border-rose-200"
+              )}
+            >
+              <LogOut className="w-3.5 h-3.5 shrink-0" />
+              <span>Déconnexion Sécurisée</span>
+            </Button>
+          </div>
         </div>
       </aside>
 
@@ -507,7 +427,7 @@ export default function DashboardLayout() {
             : "bg-white/95 border-slate-200/90 shadow-[0_2px_10px_rgba(0,0,0,0.02)]"
         )}>
           
-          {/* Left Side: Mobile Toggle, Desktop Retract, Breadcrumbs & Search */}
+          {/* Left Side: Mobile Toggle, Breadcrumbs & Search */}
           <div className="flex items-center gap-3">
             {/* Mobile Menu Open */}
             <Button 
@@ -518,26 +438,6 @@ export default function DashboardLayout() {
               aria-label="Ouvrir le menu"
             >
               <Menu className="w-5 h-5" />
-            </Button>
-
-            {/* Desktop Retract Button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleSidebarCollapse}
-              className={cn(
-                "hidden lg:flex rounded-xl h-9 w-9 cursor-pointer transition-colors border",
-                isDark 
-                  ? "text-slate-400 hover:text-white hover:bg-slate-800 border-slate-800" 
-                  : "text-slate-700 hover:text-blue-600 hover:bg-slate-100 border-slate-200/80 shadow-2xs"
-              )}
-              title={isSidebarCollapsed ? "Déplier la navigation" : "Rétracter la navigation"}
-            >
-              {isSidebarCollapsed ? (
-                <PanelLeftOpen className="w-4 h-4 text-blue-600" />
-              ) : (
-                <PanelLeftClose className="w-4 h-4" />
-              )}
             </Button>
 
             {/* Breadcrumb Context Indicator */}

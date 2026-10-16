@@ -907,7 +907,7 @@ export default function StudentInternship() {
                     <div className="w-16 h-[1px] bg-stone-200 my-1" />
                     <h2 className="text-2xl font-black tracking-widest uppercase font-serif text-slate-900">CFP - ITMC</h2>
                     <p className="text-[10px] max-w-lg tracking-wider uppercase font-sans text-slate-600 font-semibold leading-relaxed">
-                      Centre de Formation Professionnelle aux Métiers des Technologies de l'Information et du Management au Cameroun
+                      Centre de Formation Professionnelle International de Technologie aux Métiers de Construction
                     </p>
                     <p className="text-[9px] text-stone-400 font-sans italic">
                       Autorisation Ministérielle N° 000142/MINEFOP/SG/DFOP/SDGSF/SACD · Douala (Logpom)

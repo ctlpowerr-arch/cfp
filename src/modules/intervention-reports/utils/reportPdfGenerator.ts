@@ -45,7 +45,7 @@ export function generateInterventionReportPDF(aggregate: InterventionReportAggre
   doc.setFontSize(7.5);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(203, 213, 225); // slate-300
-  doc.text('Centre de Formation Professionnelle aux Métiers des Technologies & du Management • MINEFOP', margin + 6, cursorY + 14);
+  doc.text('Centre de Formation Professionnelle International de Technologie aux Métiers de Construction • MINEFOP', margin + 6, cursorY + 14);
   doc.text('Douala - Logpom (Carrefour Bassong) • info@cfp.itmc.com • (+237) 683 66 32 22 / 688 05 20 94', margin + 6, cursorY + 19);
 
   doc.setFontSize(9);

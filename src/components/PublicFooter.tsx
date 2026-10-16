@@ -67,10 +67,10 @@ export default function PublicFooter({ showWaveTransition = true }: PublicFooter
             {/* Brand Column */}
             <div className="md:col-span-5 space-y-5">
               <div className="flex items-center">
-                <AppLogo size="lg" variant="compact" />
+                <AppLogo size="lg" variant="compact" theme="dark" />
               </div>
               <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-md">
-                {branding.institutionFullName || "Institut & Centre de Formation Professionnelle aux Métiers des Technologies et du Management"} agréé par le MINEFOP à {branding.city || "Douala - Logpom"}, Cameroun. 39 Spécialités d'excellence sanctionnées par le Diplôme de Qualification Professionnelle (DQP).
+                {branding.institutionFullName || "Centre de Formation Professionnelle International de Technologie aux Métiers de Construction"} agréé par le MINEFOP à {branding.city || "Douala - Logpom"}, Cameroun. 39 Spécialités d'excellence sanctionnées par le Diplôme de Qualification Professionnelle (DQP).
               </p>
               <div className="flex gap-2.5 pt-1">
                 {[Globe, Share2, UsersIcon, StarIcon].map((Icon, i) => (

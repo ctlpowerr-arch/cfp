@@ -43,7 +43,7 @@ interface BrandingContextType {
 
 const DEFAULT_BRANDING: InstitutionBranding = {
   institutionName: "CFP-ITMC",
-  institutionFullName: "Centre de Formation Professionnelle aux Métiers des Technologies de l'Information et du Management au Cameroun",
+  institutionFullName: "Centre de Formation Professionnelle International de Technologie aux Métiers de Construction",
   acronym: "CFP-ITMC",
   city: "Douala - Logpom",
   neighborhood: "Logpom (Carrefour Bassong)",
@@ -75,12 +75,20 @@ export function BrandingProvider({ children }: { children: React.ReactNode }) {
       const cached = localStorage.getItem('cfp_itmc_branding_cache');
       if (cached) {
         const parsed = JSON.parse(cached);
+        let updated = false;
         if (parsed.email === 'contact@cfp-itmc.com' || parsed.email === 'contact@ifp-itmc.com' || !parsed.secondaryEmail || parsed.phone?.includes('638')) {
           parsed.email = 'info@cfp.itmc.com';
           parsed.secondaryEmail = 'cfp.itmc@gmail.com';
           parsed.phone = '683 66 32 22 / 688 05 20 94';
           parsed.mtnMoneyNumber = '683 66 32 22';
           parsed.orangeMoneyNumber = '688 05 20 94';
+          updated = true;
+        }
+        if (!parsed.institutionFullName || parsed.institutionFullName.includes("Technologies de l'Information") || parsed.institutionFullName.includes("Technologies et du Management")) {
+          parsed.institutionFullName = "Centre de Formation Professionnelle International de Technologie aux Métiers de Construction";
+          updated = true;
+        }
+        if (updated) {
           localStorage.setItem('cfp_itmc_branding_cache', JSON.stringify(parsed));
         }
         return parsed;

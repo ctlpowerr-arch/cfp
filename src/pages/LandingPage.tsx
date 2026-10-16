@@ -1146,31 +1146,42 @@ export default function LandingPage() {
                 </Button>
               </div>
 
-              {/* Progress Steps Indicators */}
-              <div className="px-6 py-4 bg-white border-b border-slate-50 flex items-center justify-between gap-4">
-                {[
-                  { step: 1, title: 'Compte', desc: 'Infos persos' },
-                  { step: 2, title: 'Filière', desc: 'Choix & horaires' },
-                  { step: 3, title: 'Dossier', desc: 'Téléversements' },
-                ].map((s) => (
-                  <div key={s.step} className="flex items-center gap-3">
-                    <div className={cn(
-                      "w-8 h-8 rounded-full flex items-center justify-center text-xs font-black transition-all",
-                      regStep === s.step 
-                        ? "bg-blue-600 text-white shadow-md shadow-blue-500/20 ring-4 ring-blue-50/50" 
-                        : regStep > s.step 
-                          ? "bg-green-500 text-white animate-fade-in" 
-                          : "bg-slate-100 text-slate-400"
-                    )}>
-                      {regStep > s.step ? <Check className="w-4 h-4" /> : s.step}
+              {/* Progress Steps Indicators (Responsive 2 Steps - No Horizontal Scrollbar) */}
+              <div className="px-4 sm:px-6 py-3 bg-white border-b border-slate-100">
+                <div className="grid grid-cols-2 gap-2 sm:gap-4 max-w-md mx-auto">
+                  {[
+                    { step: 1, title: '1. Coordonnées', desc: 'Identité candidat' },
+                    { step: 2, title: '2. Spécialité', desc: 'Choix & horaires' },
+                  ].map((s) => (
+                    <div 
+                      key={s.step} 
+                      className={cn(
+                        "flex items-center gap-2 sm:gap-2.5 p-2 rounded-xl transition-all select-none",
+                        regStep === s.step ? "bg-blue-50/70 border border-blue-200/60" : "opacity-75"
+                      )}
+                    >
+                      <div className={cn(
+                        "w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[11px] sm:text-xs font-black transition-all shrink-0",
+                        regStep === s.step 
+                          ? "bg-blue-600 text-white shadow-md shadow-blue-500/20" 
+                          : regStep > s.step 
+                            ? "bg-emerald-500 text-white" 
+                            : "bg-slate-100 text-slate-400"
+                      )}>
+                        {regStep > s.step ? <Check className="w-3.5 h-3.5" /> : s.step}
+                      </div>
+                      <div className="min-w-0">
+                        <p className={cn(
+                          "text-xs font-bold truncate",
+                          regStep === s.step ? "text-blue-900" : "text-slate-800"
+                        )}>
+                          {s.title}
+                        </p>
+                        <p className="text-[10px] text-slate-400 leading-none truncate mt-0.5">{s.desc}</p>
+                      </div>
                     </div>
-                    <div className="hidden xs:block">
-                      <p className="text-xs font-bold text-slate-800">{s.title}</p>
-                      <p className="text-[10px] text-slate-400 leading-none">{s.desc}</p>
-                    </div>
-                    {s.step < 3 && <div className="hidden md:block w-12 h-0.5 bg-slate-100" />}
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
 
               {/* Error Alert */}
@@ -1368,135 +1379,52 @@ export default function LandingPage() {
                       </div>
                     )}
 
-                    {regStep === 3 && (
-                      <div className="space-y-4">
-                        <div className="p-3.5 bg-emerald-50/80 border border-emerald-200/80 rounded-2xl text-xs text-emerald-900 font-bold leading-relaxed flex items-center justify-between gap-3">
-                          <span>💡 <strong>Étape Optionnelle :</strong> L'envoi des diplômes et justificatifs n'est pas obligatoire pour soumettre votre pré-inscription. Vous pouvez joindre vos pièces maintenant ou finaliser directement.</span>
-                        </div>
-
-                        {/* Document grid */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          {[
-                            { key: 'diploma', label: 'Dernier diplôme obtenu (Optionnel)', desc: 'Scan du Bac ou BEPC (facultatif)' },
-                            { key: 'birthCertificate', label: 'Acte de naissance (Optionnel)', desc: 'Scan de votre acte (facultatif)' },
-                            { key: 'medicalCertificate', label: 'Certificat médical (Optionnel)', desc: 'Certificat de bonne santé (facultatif)' },
-                            { key: 'cni', label: 'Photocopie CNI (Optionnel)', desc: 'Carte nationale d’identité (facultatif)' },
-                          ].map((doc) => {
-                            const field = doc.key as 'diploma' | 'birthCertificate' | 'medicalCertificate' | 'cni';
-                            const hasFile = regFiles[field];
-                            const progress = uploadProgress[field];
-                            const isUploading = progress !== undefined && progress < 100;
-                            
-                            return (
-                              <div key={doc.key} className="space-y-1.5">
-                                <label className="text-xs font-black text-slate-700">{doc.label}</label>
-                                
-                                <div 
-                                  onDragOver={e => e.preventDefault()}
-                                  onDrop={e => handleFileDrop(field, e)}
-                                  onClick={() => {
-                                    const input = document.getElementById(`file-input-${doc.key}`);
-                                    if (input) input.click();
-                                  }}
-                                  className={cn(
-                                    "border-2 border-dashed rounded-2xl p-4 text-center cursor-pointer transition-all flex flex-col items-center justify-center gap-2 h-36",
-                                    hasFile 
-                                      ? "border-green-500 bg-green-50/10" 
-                                      : isUploading 
-                                        ? "border-blue-400 bg-blue-50/5" 
-                                        : "border-slate-200 hover:border-slate-300 bg-slate-50/50"
-                                  )}
-                                >
-                                  <input 
-                                    type="file" 
-                                    id={`file-input-${doc.key}`}
-                                    className="hidden"
-                                    onChange={e => handleFileChange(field, e.target.files ? e.target.files[0] : null)}
-                                    accept="image/*,application/pdf"
-                                  />
-                                  
-                                  {hasFile ? (
-                                    <>
-                                      <div className="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
-                                        <Check className="w-4 h-4" />
-                                      </div>
-                                      <p className="text-xs font-black text-slate-800 line-clamp-1 max-w-[150px]">{hasFile.name}</p>
-                                      <span className="text-[10px] text-green-600 font-extrabold uppercase">Téléversé</span>
-                                    </>
-                                  ) : isUploading ? (
-                                    <>
-                                      <div className="w-full px-4 space-y-1.5">
-                                        <div className="flex justify-between text-[10px] font-bold text-blue-600">
-                                          <span>Chargement...</span>
-                                          <span>{progress}%</span>
-                                        </div>
-                                        <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
-                                          <div className="bg-blue-600 h-full transition-all duration-100" style={{ width: `${progress}%` }} />
-                                        </div>
-                                      </div>
-                                    </>
-                                  ) : (
-                                    <>
-                                      <Upload className="w-5 h-5 text-slate-400" />
-                                      <div>
-                                        <p className="text-[11px] font-extrabold text-slate-800">Glisser-déposer ou cliquer</p>
-                                        <p className="text-[9px] text-slate-400 mt-0.5">{doc.desc}</p>
-                                      </div>
-                                    </>
-                                  )}
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    )}
+                    {/* Note informative */}
+                    <div className="p-3 bg-emerald-50 rounded-2xl border border-emerald-200 text-xs text-emerald-800 font-medium">
+                      💡 <strong>Dépôt des pièces en présentiel :</strong> Aucun scan obligatoire en ligne. Vos photocopies de diplômes et actes de naissance pourront être déposées directement lors de votre passage au campus à Douala Logpom.
+                    </div>
                   </div>
                 )}
               </div>
 
               {/* Footer navigation */}
               {!regSuccess && (
-                <div className="p-6 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between shrink-0">
+                <div className="p-4 sm:p-6 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between shrink-0 gap-3">
                   <Button
                     type="button"
                     disabled={regStep === 1}
-                    onClick={() => setRegStep(prev => prev - 1)}
+                    onClick={() => {
+                      setRegError('');
+                      setRegStep(prev => prev - 1);
+                    }}
                     variant="outline"
-                    className="rounded-xl font-bold h-11 border-slate-200 text-slate-700 disabled:opacity-50"
+                    className="rounded-xl font-bold h-11 border-slate-200 text-slate-700 disabled:opacity-50 cursor-pointer"
                   >
                     Précédent
                   </Button>
 
-                  {regStep < 3 ? (
+                  {regStep === 1 ? (
                     <Button
                       type="button"
                       onClick={() => {
-                        // Check validation per step
-                        if (regStep === 1) {
-                          if (!regFormData.firstName || !regFormData.lastName || !regFormData.phone) {
-                            setRegError('Veuillez remplir toutes les informations obligatoires.');
-                            return;
-                          }
-                        } else if (regStep === 2) {
-                          if (!regFormData.specialtyId) {
-                            setRegError('Veuillez sélectionner la spécialité souhaitée.');
-                            return;
-                          }
+                        if (!regFormData.firstName || !regFormData.lastName || !regFormData.phone) {
+                          setRegError('Veuillez remplir toutes les informations obligatoires (Prénom, Nom, Téléphone).');
+                          return;
                         }
                         setRegError('');
-                        setRegStep(prev => prev + 1);
+                        setRegStep(2);
                       }}
-                      className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl h-11 font-extrabold px-6"
+                      className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl h-11 font-extrabold px-6 cursor-pointer shadow-md shadow-blue-500/20"
                     >
-                      Suivant
+                      <span>Continuer</span>
+                      <ArrowRight className="w-4 h-4 ml-1.5" />
                     </Button>
                   ) : (
                     <Button
                       type="button"
                       disabled={isSubmitting}
                       onClick={handleRegistrationSubmit}
-                      className="bg-green-600 hover:bg-green-700 text-white rounded-xl h-11 font-black px-8 shadow-lg shadow-green-500/10 min-w-[200px]"
+                      className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl h-11 font-black px-6 sm:px-8 shadow-md shadow-emerald-500/20 cursor-pointer"
                     >
                       {isSubmitting ? (
                         <div className="flex items-center gap-2">
@@ -1504,7 +1432,7 @@ export default function LandingPage() {
                           Traitement...
                         </div>
                       ) : (
-                        "Soumettre mon dossier"
+                        "Valider ma Pré-inscription"
                       )}
                     </Button>
                   )}

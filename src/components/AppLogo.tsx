@@ -27,7 +27,7 @@ export default function AppLogo({
   const activeLogoUrl = overrideLogoUrl !== undefined ? overrideLogoUrl : branding.logoUrl;
   const hasCustomLogo = !!activeLogoUrl && !hasImageError;
   const acronym = overrideName || branding.acronym || "CFP-ITMC";
-  const fullName = branding.institutionFullName || "Institut & Centre de Formation Professionnelle aux Métiers des Technologies et du Management";
+  const fullName = branding.institutionFullName || "Centre de Formation Professionnelle International de Technologie aux Métiers de Construction";
   const city = branding.city || "Douala - Logpom";
 
   // Dimensions based on size
@@ -209,13 +209,17 @@ export default function AppLogo({
       <div className={cn("inline-flex items-center gap-2.5", className)}>
         {renderVisualBadge()}
         <div className="flex flex-col">
-          <span className={cn("font-black tracking-tight leading-none text-slate-900 dark:text-white", textSizes[size])}>
+          <span className={cn(
+            "font-black tracking-tight leading-none",
+            theme === 'dark' ? "text-white" : theme === 'light' ? "text-slate-900" : "text-slate-900 dark:text-white",
+            textSizes[size]
+          )}>
             {acronym.includes('-') ? (
               <>
-                {acronym.split('-')[0]}-<span className="text-blue-600 dark:text-blue-400">{acronym.split('-').slice(1).join('-')}</span>
+                {acronym.split('-')[0]}-<span className={theme === 'dark' ? "text-blue-400" : "text-blue-600 dark:text-blue-400"}>{acronym.split('-').slice(1).join('-')}</span>
               </>
             ) : (
-              <span className="text-blue-600 dark:text-blue-400">{acronym}</span>
+              <span className={theme === 'dark' ? "text-blue-400" : "text-blue-600 dark:text-blue-400"}>{acronym}</span>
             )}
           </span>
           {showSubtitle && (

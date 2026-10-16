@@ -74,9 +74,15 @@ function filterByAcademicYear(data: any[], academicYear: string | null): any[] {
   return filtered.length > 0 ? filtered : data;
 }
 
+const writeQueues = new Map<string, Promise<any>>();
+
 async function readDb(filePath: string, defaultVal: any = []): Promise<any> {
   try {
     const data = await fs.readFile(filePath, "utf-8");
+    if (!data || !data.trim()) {
+      await writeDb(filePath, defaultVal);
+      return defaultVal;
+    }
     const parsed = JSON.parse(data);
     dbCache[filePath] = parsed;
     return parsed;
@@ -85,17 +91,51 @@ async function readDb(filePath: string, defaultVal: any = []): Promise<any> {
       return dbCache[filePath];
     }
     dbCache[filePath] = defaultVal;
+    try {
+      await fs.writeFile(filePath, JSON.stringify(defaultVal, null, 2), "utf-8");
+    } catch (e) {
+      console.error("Failed to initialize DB file:", filePath, e);
+    }
     return defaultVal;
   }
 }
 
 async function writeDb(filePath: string, data: any): Promise<void> {
   dbCache[filePath] = data;
-  try {
-    await fs.writeFile(filePath, JSON.stringify(data, null, 2));
-  } catch (err) {
-    console.error("Failed to write DB file:", filePath, err);
-  }
+  
+  // Chain write per file path to avoid concurrent file lock collisions
+  const currentTask = writeQueues.get(filePath) || Promise.resolve();
+  const nextTask = currentTask.then(async () => {
+    try {
+      // Auto-backup folder in process directory
+      const backupDir = path.join(process.cwd(), "data_backups");
+      try {
+        await fs.mkdir(backupDir, { recursive: true });
+        const backupFile = path.join(backupDir, `${path.basename(filePath)}.bak`);
+        await fs.writeFile(backupFile, JSON.stringify(data, null, 2), "utf-8");
+      } catch {}
+
+      const tempPath = filePath + `.${Date.now()}.${Math.random().toString(36).substring(2, 6)}.tmp`;
+      await fs.writeFile(tempPath, JSON.stringify(data, null, 2), "utf-8");
+      try {
+        await fs.rename(tempPath, filePath);
+      } catch (renameErr) {
+        // Fallback for cross-device links or volume mounts in Docker
+        await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
+        try { await fs.unlink(tempPath); } catch {}
+      }
+    } catch (err) {
+      console.error("Failed to write DB file atomically:", filePath, err);
+      try {
+        await fs.writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
+      } catch (e) {
+        console.error("Fallback direct write also failed:", filePath, e);
+      }
+    }
+  });
+
+  writeQueues.set(filePath, nextTask);
+  await nextTask;
 }
 
 const SPECIALTY_MATRICULE_REGISTRY = [
@@ -527,7 +567,7 @@ async function ensureDb() {
     { path: SECURITY_LOGS_DB_PATH, default: [] },
     { path: BRANDING_DB_PATH, default: {
       institutionName: "CFP-ITMC",
-      institutionFullName: "Centre de Formation Professionnelle aux Métiers des Technologies de l'Information et du Management au Cameroun",
+      institutionFullName: "Centre de Formation Professionnelle International de Technologie aux Métiers de Construction",
       acronym: "CFP-ITMC",
       city: "Douala - Logpom",
       neighborhood: "Logpom (Carrefour Bassong)",
@@ -550,38 +590,49 @@ async function ensureDb() {
         await fs.access(db.path);
         if (db.path === STUDENTS_DB_PATH) {
           const content = await fs.readFile(db.path, "utf-8");
-          let parsed = JSON.parse(content);
-          if (!Array.isArray(parsed) || parsed.length < 39) {
+          let parsed: any = [];
+          try {
+            parsed = JSON.parse(content);
+          } catch {
+            parsed = db.default;
+          }
+          if (!Array.isArray(parsed) || parsed.length === 0) {
             parsed = db.default;
           }
 
           // Ensure every student has an official MINEFOP matricule
           const specCounters = new Map<string, number>();
           let hasUpdatedMatricule = false;
-          parsed.forEach((std: any, idx: number) => {
-            const specKey = (std.specialty || "Génie Logiciel").toLowerCase().trim();
-            const count = (specCounters.get(specKey) || 0) + 1;
-            specCounters.set(specKey, count);
+          if (Array.isArray(parsed)) {
+            parsed.forEach((std: any) => {
+              const specKey = (std.specialty || "Génie Logiciel").toLowerCase().trim();
+              const count = (specCounters.get(specKey) || 0) + 1;
+              specCounters.set(specKey, count);
 
-            if (!std.matricule || std.matricule.startsWith('ITMC-std_') || std.matricule.startsWith('std_') || std.matricule.includes('Math.floor')) {
-              std.matricule = buildOfficialMatricule(std.specialty || "Génie Logiciel", std.academicYear || "2026-2027", count, 'upper');
-              hasUpdatedMatricule = true;
-            }
-          });
-
-          if (hasUpdatedMatricule || !Array.isArray(JSON.parse(content)) || JSON.parse(content).length < 39) {
-            await fs.writeFile(db.path, JSON.stringify(parsed, null, 2));
+              if (!std.matricule || std.matricule.startsWith('ITMC-std_') || std.matricule.startsWith('std_') || std.matricule.includes('Math.floor')) {
+                std.matricule = buildOfficialMatricule(std.specialty || "Génie Logiciel", std.academicYear || "2026-2027", count, 'upper');
+                hasUpdatedMatricule = true;
+              }
+            });
           }
-        }
-        if (db.path === TEACHERS_DB_PATH) {
+
+          if (hasUpdatedMatricule || !Array.isArray(parsed)) {
+            await writeDb(db.path, parsed);
+          }
+        } else if (db.path === TEACHERS_DB_PATH) {
           const content = await fs.readFile(db.path, "utf-8");
-          const parsed = JSON.parse(content);
-          if (!Array.isArray(parsed) || parsed.length < 5 || parsed.some(t => t.id === 'demo_teacher')) {
-            await fs.writeFile(db.path, JSON.stringify(db.default, null, 2));
+          let parsed: any = [];
+          try {
+            parsed = JSON.parse(content);
+          } catch {
+            parsed = db.default;
+          }
+          if (!Array.isArray(parsed) || parsed.length === 0) {
+            await writeDb(db.path, db.default);
           }
         }
       } catch {
-        await fs.writeFile(db.path, JSON.stringify(db.default, null, 2));
+        await writeDb(db.path, db.default);
       }
     })
   );
@@ -1278,11 +1329,46 @@ async function startServer() {
         return next();
       }
 
-      // 3. Smart read-only bypass for student / teacher on educational info (Schedules, Courses, Classes, own registrations)
+      // 3. Smart read-only bypass for student / teacher on educational info (Schedules, Courses, Classes, Teachers, Modules, Compositions)
       if (req.method === 'GET' && (user.role === 'student' || user.role === 'teacher')) {
-        const allowedReadPaths = ['/api/schedule', '/api/classes', '/api/courses', '/api/registrations', '/api/students'];
+        const allowedReadPaths = [
+          '/api/teachers',
+          '/api/schedule',
+          '/api/classes',
+          '/api/courses',
+          '/api/modules',
+          '/api/registrations',
+          '/api/students',
+          '/api/compositions',
+          '/api/normales',
+          '/api/annual-bulletins',
+          '/api/attendance',
+          '/api/games',
+          '/api/notifications',
+          '/api/branding',
+          '/api/academic-years'
+        ];
         const currentPath = req.baseUrl || req.path || '';
         if (allowedReadPaths.some(p => currentPath.startsWith(p))) {
+          return next();
+        }
+      }
+
+      // 3b. Teacher pedagogical operations bypass (grading, attendance, course modules, schedules, games, teacher profile)
+      if (user.role === 'teacher') {
+        const teacherWritePaths = [
+          '/api/attendance',
+          '/api/compositions',
+          '/api/normales',
+          '/api/modules',
+          '/api/progress',
+          '/api/schedule',
+          '/api/games',
+          '/api/teachers',
+          '/api/notifications'
+        ];
+        const currentPath = req.baseUrl || req.path || '';
+        if (teacherWritePaths.some(p => currentPath.startsWith(p))) {
           return next();
         }
       }
@@ -1465,15 +1551,33 @@ async function startServer() {
           ? ["all", "admin", "superadmin"] 
           : account.role === "secretary"
           ? ["perm_manage_prof_schedule", "perm_create_classrooms", "perm_generate_rt_schedules", "perm_generate_bulletins", "perm_post_events", "perm_add_student", "perm_add_teacher"]
-          : [account.role],
+          : account.role === "teacher"
+          ? [
+              "teacher",
+              "perm_view_teachers",
+              "perm_edit_teacher",
+              "perm_view_students_list",
+              "perm_edit_student_info",
+              "perm_view_schedules",
+              "perm_create_schedule_slot",
+              "perm_edit_schedule_slot",
+              "perm_view_modules",
+              "perm_edit_modules",
+              "perm_view_compositions",
+              "perm_grade_compositions",
+              "perm_attendance",
+              "perm_games"
+            ]
+          : ["student", "perm_view_schedules", "perm_view_modules", "perm_view_compositions"],
         mustChangePassword: needsPasswordChange
       };
 
       const token = generateSessionToken(userPayload, 12);
+      const isHttps = req.secure || req.headers['x-forwarded-proto'] === 'https' || process.env.NODE_ENV === "production";
       res.cookie("ITMC_SESSION", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        secure: isHttps,
+        sameSite: isHttps ? "none" : "lax",
         maxAge: 12 * 3600 * 1000,
         path: "/"
       });
@@ -1672,7 +1776,7 @@ async function startServer() {
     try {
       const defaultBranding = {
         institutionName: "CFP-ITMC",
-        institutionFullName: "Centre de Formation Professionnelle aux Métiers des Technologies de l'Information et du Management au Cameroun",
+        institutionFullName: "Centre de Formation Professionnelle International de Technologie aux Métiers de Construction",
         acronym: "CFP-ITMC",
         city: "Douala - Logpom",
         neighborhood: "Logpom (Carrefour Bassong)",
@@ -1687,6 +1791,9 @@ async function startServer() {
         updatedAt: new Date().toISOString()
       };
       const branding = await readDb(BRANDING_DB_PATH, defaultBranding);
+      if (branding.institutionFullName && (branding.institutionFullName.includes("Technologies de l'Information") || branding.institutionFullName.includes("Technologies et du Management"))) {
+        branding.institutionFullName = "Centre de Formation Professionnelle International de Technologie aux Métiers de Construction";
+      }
       res.json({ success: true, branding });
     } catch (error) {
       console.error("Get Branding Error:", error);
@@ -1729,7 +1836,7 @@ async function startServer() {
       const updatedBranding = {
         ...current,
         institutionName: institutionName !== undefined ? sanitizeText(institutionName) : (current.institutionName || "CFP-ITMC"),
-        institutionFullName: institutionFullName !== undefined ? sanitizeText(institutionFullName) : (current.institutionFullName || "Centre de Formation Professionnelle aux Métiers des Technologies de l'Information et du Management au Cameroun"),
+        institutionFullName: institutionFullName !== undefined ? sanitizeText(institutionFullName) : (current.institutionFullName || "Centre de Formation Professionnelle International de Technologie aux Métiers de Construction"),
         acronym: acronym !== undefined ? sanitizeText(acronym) : (current.acronym || "CFP-ITMC"),
         city: city !== undefined ? sanitizeText(city) : (current.city || "Douala - Logpom"),
         neighborhood: neighborhood !== undefined ? sanitizeText(neighborhood) : (current.neighborhood || "Logpom (Carrefour Bassong)"),
@@ -9551,7 +9658,7 @@ async function startServer() {
       }
 
       const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-      const prompt = `Tu es l'assistant d'orientation et pédagogique du CFP-ITMC (Centre de Formation Professionnelle aux Métiers des Technologies de l'Information et du Management au Cameroun, basé à Douala - Logpom).
+      const prompt = `Tu es l'assistant d'orientation et pédagogique du CFP-ITMC (Centre de Formation Professionnelle International de Technologie aux Métiers de Construction, basé à Douala - Logpom).
 Directives de sécurité et de déontologie :
 1. Réponds de façon concise, polie, professionnelle et bienveillante en français.
 2. Axé strictement sur le CFP-ITMC : spécialités (Génie Logiciel, Réseaux & Télécoms, Cyber-sécurité, IA & Big Data, Cloud, Gestion de Projets), admissions, examens et scolarité.

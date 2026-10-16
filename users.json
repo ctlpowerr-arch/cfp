@@ -1,0 +1,26 @@
+[
+  {
+    "id": "admin_master_1",
+    "email": "admin@itmc-it.cm",
+    "passwordHash": "aed38f116336a539407257212a795237ec538a2a1239b8ead5c5ca080f276587",
+    "mustChangePassword": false,
+    "role": "admin",
+    "name": "Directeur Pédagogique & Admin ITMC"
+  },
+  {
+    "id": "admin_master_2",
+    "email": "ctlpowerr@gmail.com",
+    "passwordHash": "aed38f116336a539407257212a795237ec538a2a1239b8ead5c5ca080f276587",
+    "mustChangePassword": false,
+    "role": "admin",
+    "name": "Super Administrateur ITMC"
+  },
+  {
+    "id": "TCH-001",
+    "email": "jp.kamga@itmc-it.cm",
+    "passwordHash": "aed38f116336a539407257212a795237ec538a2a1239b8ead5c5ca080f276587",
+    "mustChangePassword": true,
+    "role": "teacher",
+    "name": "Dr. Jean-Paul Kamga"
+  }
+]

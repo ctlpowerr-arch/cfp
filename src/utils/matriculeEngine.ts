@@ -1,6 +1,6 @@
 /**
  * MINEFOP Official Matricule Generation & Management Engine (Cameroon Vocational Training Standards)
- * CFP-ITMC Douala (Centre de Formation Professionnelle aux Métiers des Technologies & du Management)
+ * CFP-ITMC Douala (Centre de Formation Professionnelle International de Technologie aux Métiers de Construction)
  *
  * Official Matricule Format:
  * [NUMERO_FILIERE][SIGLE_INSTITUT][ANNEE_SESSION][CODE_SPECIALITE][NUMERO_ORDRE_ALPHABETIQUE]

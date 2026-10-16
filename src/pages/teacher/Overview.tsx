@@ -39,7 +39,15 @@ import { cn } from "@/lib/utils";
 import RollCallModal from '@/components/teacher/RollCallModal';
 
 export default function TeacherOverview() {
-  const { teacher } = useOutletContext<{ teacher: any }>();
+  const { teacher: rawTeacher } = useOutletContext<{ teacher: any }>() || {};
+  const teacher = rawTeacher || {
+    id: "TCH-001",
+    name: "Dr. Jean-Paul Kamga",
+    email: "jp.kamga@itmc-it.cm",
+    assignedClasses: ["G1", "L3-GL"],
+    specialty: "Génie Logiciel"
+  };
+
   const navigate = useNavigate();
   const [isCourseActive, setIsCourseActive] = useState(false);
   const [realStudents, setRealStudents] = useState<any[]>([]);
@@ -52,7 +60,8 @@ export default function TeacherOverview() {
     fetch('/api/students')
       .then(res => res.json())
       .then(data => {
-        const teacherClassCodes = teacher.assignedClasses ? teacher.assignedClasses.map((c: any) => typeof c === 'string' ? c : c?.classCode || c?.code || '') : [];
+        if (!Array.isArray(data)) return;
+        const teacherClassCodes = teacher?.assignedClasses ? teacher.assignedClasses.map((c: any) => typeof c === 'string' ? c : c?.classCode || c?.code || '') : [];
         if (teacherClassCodes.length > 0) {
           const myStudents = data.filter((s: any) => 
             teacherClassCodes.includes(s.classCode) || 
@@ -60,7 +69,7 @@ export default function TeacherOverview() {
             (s.classCode && teacherClassCodes.some((cc: string) => s.classCode.startsWith(cc)))
           );
           setRealStudents(myStudents.length > 0 ? myStudents : data.slice(0, 16));
-        } else if (teacher.specialty) {
+        } else if (teacher?.specialty) {
           const myStudents = data.filter((s: any) => s.specialty === teacher.specialty);
           setRealStudents(myStudents.length > 0 ? myStudents : data.slice(0, 16));
         } else {
@@ -73,9 +82,10 @@ export default function TeacherOverview() {
     fetch('/api/schedule')
       .then(res => res.json())
       .then(data => {
-        const tId = teacher.id;
-        const tEmail = teacher.email?.toLowerCase();
-        const tName = teacher.name?.toLowerCase();
+        if (!Array.isArray(data)) return;
+        const tId = teacher?.id;
+        const tEmail = teacher?.email?.toLowerCase();
+        const tName = teacher?.name?.toLowerCase();
         const mySessions = data.filter((s: any) => 
           (tId && s.teacherId === tId) ||
           (tEmail && s.teacherEmail?.toLowerCase() === tEmail) ||
@@ -86,7 +96,8 @@ export default function TeacherOverview() {
       .catch(console.error);
 
     // 3. Load administrative notifications
-    fetch(`/api/notifications?teacherId=${teacher.id}`)
+    const targetId = teacher?.id || "TCH-001";
+    fetch(`/api/notifications?teacherId=${targetId}`)
       .then(res => res.json())
       .then(notifs => {
         if (Array.isArray(notifs)) {

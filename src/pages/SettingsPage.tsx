@@ -125,7 +125,7 @@ export default function SettingsPage() {
 
   const [institutionForm, setInstitutionForm] = useState({
     institutionName: branding.institutionName || 'CFP-ITMC',
-    institutionFullName: branding.institutionFullName || "Centre de Formation Professionnelle aux Métiers des Technologies de l'Information et du Management au Cameroun",
+    institutionFullName: branding.institutionFullName || "Centre de Formation Professionnelle International de Technologie aux Métiers de Construction",
     acronym: branding.acronym || 'CFP-ITMC',
     motto: branding.motto || "L'Excellence Technologique et Managériale au Service de l'Emploi",
     directorName: branding.directorName || "Dr. TCHAPGNIN Gédéon",
@@ -152,7 +152,7 @@ export default function SettingsPage() {
   useEffect(() => {
     setInstitutionForm({
       institutionName: branding.institutionName || 'CFP-ITMC',
-      institutionFullName: branding.institutionFullName || "Centre de Formation Professionnelle aux Métiers des Technologies de l'Information et du Management au Cameroun",
+      institutionFullName: branding.institutionFullName || "Centre de Formation Professionnelle International de Technologie aux Métiers de Construction",
       acronym: branding.acronym || 'CFP-ITMC',
       motto: branding.motto || "L'Excellence Technologique et Managériale au Service de l'Emploi",
       directorName: branding.directorName || "Dr. TCHAPGNIN Gédéon",

@@ -1,0 +1,166 @@
+[
+  {
+    "id": "stage_001",
+    "studentId": "std_203",
+    "studentName": "Thierry Nguema",
+    "studentClass": "Génie Logiciel (G2)",
+    "academicYear": "2026-2027",
+    "companyName": "Orange Cameroun",
+    "location": "Douala, Boulevard de la Liberté, Akwa",
+    "supervisorName": "M. Éric Kamdem",
+    "supervisorEmail": "e.kamdem@orange.cm",
+    "supervisorPhone": "+237 638 36 63 22",
+    "startDate": "2026-08-01",
+    "endDate": "2026-10-31",
+    "durationMonths": 3,
+    "status": "active",
+    "questStep": 5,
+    "conventionSigned": true,
+    "midtermValidated": true,
+    "tutorScore": 18,
+    "tutorAppreciation": "Excellente implication dans le déploiement du microservice de facturation.",
+    "reportValidated": true,
+    "documents": [
+      {
+        "id": "doc_1",
+        "name": "Convention_Stage_Signee.pdf",
+        "type": "convention",
+        "uploadedBy": "administration",
+        "uploadedAt": "2026-08-02T10:00:00.000Z",
+        "fileContent": "data:application/pdf;base64,JVBERi0xLjQK"
+      },
+      {
+        "id": "doc_2",
+        "name": "Fiche_Evaluation_Tuteur_Orange.pdf",
+        "type": "evaluation",
+        "uploadedBy": "tuteur",
+        "uploadedAt": "2026-09-25T14:30:00.000Z",
+        "fileContent": "data:application/pdf;base64,JVBERi0xLjQK"
+      },
+      {
+        "id": "doc_3",
+        "name": "Rapport_Intervention_Final.pdf",
+        "type": "rapport",
+        "uploadedBy": "étudiant",
+        "uploadedAt": "2026-10-01T09:15:00.000Z",
+        "fileContent": "data:application/pdf;base64,JVBERi0xLjQK"
+      }
+    ],
+    "createdAt": "2026-08-01T08:00:00.000Z"
+  },
+  {
+    "id": "stage_002",
+    "studentId": "std_204",
+    "studentName": "Martine Kenmoe",
+    "studentClass": "Big Data & BI (G2)",
+    "academicYear": "2026-2027",
+    "companyName": "MTN Cameroon",
+    "location": "Douala, Akwa Nord",
+    "supervisorName": "Mme Clarisse Nguemo",
+    "supervisorEmail": "c.nguemo@mtn.cm",
+    "supervisorPhone": "+237 688 05 20 94",
+    "startDate": "2026-08-15",
+    "endDate": "2026-10-15",
+    "durationMonths": 2,
+    "status": "active",
+    "questStep": 3,
+    "conventionSigned": true,
+    "midtermValidated": true,
+    "tutorScore": null,
+    "tutorAppreciation": "",
+    "reportValidated": false,
+    "documents": [
+      {
+        "id": "doc_4",
+        "name": "Convention_Stage_MTN_Signee.pdf",
+        "type": "convention",
+        "uploadedBy": "administration",
+        "uploadedAt": "2026-08-16T11:00:00.000Z",
+        "fileContent": "data:application/pdf;base64,JVBERi0xLjQK"
+      }
+    ],
+    "createdAt": "2026-08-15T09:00:00.000Z"
+  },
+  {
+    "id": "stage_003",
+    "studentId": "std_302",
+    "studentName": "Donald Owona",
+    "studentClass": "Cloud Computing (L3-GL)",
+    "academicYear": "2026-2027",
+    "companyName": "Camtel Cameroun",
+    "location": "Douala, Bépanda Omnisports",
+    "supervisorName": "M. Paulin Manga",
+    "supervisorEmail": "p.manga@camtel.cm",
+    "supervisorPhone": "+237 638 36 63 22",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "durationMonths": 3,
+    "status": "completed",
+    "questStep": 6,
+    "conventionSigned": true,
+    "midtermValidated": true,
+    "tutorScore": 19,
+    "tutorAppreciation": "Maîtrise remarquable des clusters Kubernetes et de l'infrastructure réseau.",
+    "reportValidated": true,
+    "certificateGenerated": true,
+    "documents": [
+      {
+        "id": "doc_5",
+        "name": "Convention_Stage_Camtel.pdf",
+        "type": "convention",
+        "uploadedBy": "administration",
+        "uploadedAt": "2026-07-02T10:00:00.000Z",
+        "fileContent": "data:application/pdf;base64,JVBERi0xLjQK"
+      },
+      {
+        "id": "doc_6",
+        "name": "Evaluation_Tuteur_19_sur_20.pdf",
+        "type": "evaluation",
+        "uploadedBy": "tuteur",
+        "uploadedAt": "2026-09-28T16:00:00.000Z",
+        "fileContent": "data:application/pdf;base64,JVBERi0xLjQK"
+      },
+      {
+        "id": "doc_7",
+        "name": "Rapport_Technique_Cloud_Camtel.pdf",
+        "type": "rapport",
+        "uploadedBy": "étudiant",
+        "uploadedAt": "2026-09-29T11:20:00.000Z",
+        "fileContent": "data:application/pdf;base64,JVBERi0xLjQK"
+      },
+      {
+        "id": "doc_8",
+        "name": "Attestation_Fin_Stage_Officielle.pdf",
+        "type": "attestation",
+        "uploadedBy": "administration",
+        "uploadedAt": "2026-10-01T15:00:00.000Z",
+        "fileContent": "data:application/pdf;base64,JVBERi0xLjQK"
+      }
+    ],
+    "createdAt": "2026-07-01T08:00:00.000Z"
+  },
+  {
+    "id": "stage_004",
+    "studentId": "std_207",
+    "studentName": "Alain Abega",
+    "studentClass": "Génie Logiciel (G2)",
+    "academicYear": "2026-2027",
+    "companyName": "TotalEnergies Marketing Cameroun",
+    "location": "Douala, Zone Portuaire Bonabéri",
+    "supervisorName": "M. Fabrice Mbida",
+    "supervisorEmail": "f.mbida@totalenergies.cm",
+    "supervisorPhone": "+237 688 05 20 94",
+    "startDate": "2026-09-01",
+    "endDate": "2026-11-30",
+    "durationMonths": 3,
+    "status": "active",
+    "questStep": 2,
+    "conventionSigned": false,
+    "midtermValidated": false,
+    "tutorScore": null,
+    "tutorAppreciation": "",
+    "reportValidated": false,
+    "documents": [],
+    "createdAt": "2026-09-01T08:30:00.000Z"
+  }
+]

@@ -243,6 +243,11 @@ export default function TeacherSchedule() {
       const res = await fetch('/api/schedule');
       const data = await res.json();
       
+      if (!Array.isArray(data)) {
+        setSchedule([]);
+        return;
+      }
+
       // Filter strictly for THIS logged-in teacher ONLY
       if (teacher) {
         const mySchedule = data.filter((item: any) => {

@@ -93,7 +93,7 @@ export function generateDirectReceiptPDF(receipt: any, fileName: string = 'Recu_
       doc.setFontSize(7);
       doc.setFont('helvetica', 'normal');
       doc.setTextColor(51, 65, 85);
-      doc.text("Institut de Formation Professionnelle aux Métiers des Technologies & du Management", 14, contentY + 12);
+      doc.text("Centre de Formation Professionnelle International de Technologie aux Métiers de Construction", 14, contentY + 12);
       doc.setFontSize(6.5);
       doc.setTextColor(100, 116, 139);
       doc.text("Arrêté d'homologation MINEFOP • Douala Logpom (Carrefour Bassong) • Tél: (+237) 683 66 32 22 / 688 05 20 94", 14, contentY + 15.5);

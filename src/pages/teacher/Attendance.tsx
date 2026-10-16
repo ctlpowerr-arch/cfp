@@ -868,7 +868,7 @@ export default function TeacherAttendancePage() {
               <div>
                 <h2 className="text-xl font-black tracking-tight text-slate-900">CFP-ITMC DOUALA - LOGPOM</h2>
                 <p className="text-[10px] font-bold text-slate-600 uppercase tracking-widest">
-                  Institut & Centre de Formation Professionnelle aux Métiers des Technologies & du Management
+                  Centre de Formation Professionnelle International de Technologie aux Métiers de Construction
                 </p>
                 <p className="text-[9px] text-slate-500">Agrément MINEFOP • N° 000214/MINEFOP/SG/DFOP</p>
               </div>

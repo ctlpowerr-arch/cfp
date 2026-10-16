@@ -221,7 +221,7 @@ export default function CaisseReceiptModal({ isOpen, onClose, receipt }: CaisseR
                 </span>
               </div>
               <p className="text-xs font-semibold text-slate-800 leading-tight mt-0.5">
-                Institut de Formation Professionnelle aux Métiers des Technologies & du Management
+                Centre de Formation Professionnelle International de Technologie aux Métiers de Construction
               </p>
               <p className="text-[10px] text-slate-500 mt-1">
                 Arrêté d'homologation MINEFOP • Douala Logpom (Carrefour Bassong) • Tél: (+237) 683 66 32 22 / 688 05 20 94

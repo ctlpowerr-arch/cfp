@@ -48,7 +48,14 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
 export default function TeacherStudents() {
-  const { teacher } = useOutletContext<{ teacher: any }>();
+  const { teacher: rawTeacher } = useOutletContext<{ teacher: any }>() || {};
+  const teacher = rawTeacher || {
+    id: "TCH-001",
+    name: "Dr. Jean-Paul Kamga",
+    email: "jp.kamga@itmc-it.cm",
+    assignedClasses: ["G1", "L3-GL"],
+    specialty: "Génie Logiciel"
+  };
   const [students, setStudents] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -71,7 +78,11 @@ export default function TeacherStudents() {
       const res = await fetch('/api/students');
       if (res.ok) {
         const data = await res.json();
-        const teacherClassCodes = teacher.assignedClasses ? teacher.assignedClasses.map((c: any) => typeof c === 'string' ? c : c?.classCode || c?.code || '') : [];
+        if (!Array.isArray(data)) {
+          setStudents([]);
+          return;
+        }
+        const teacherClassCodes = teacher?.assignedClasses ? teacher.assignedClasses.map((c: any) => typeof c === 'string' ? c : c?.classCode || c?.code || '') : [];
         let myStudents = data;
         if (teacherClassCodes.length > 0) {
           myStudents = data.filter((s: any) => 
@@ -80,7 +91,7 @@ export default function TeacherStudents() {
             (s.classCode && teacherClassCodes.some((cc: string) => s.classCode.startsWith(cc)))
           );
           setStudents(myStudents.length > 0 ? myStudents : data.slice(0, 16));
-        } else if (teacher.specialty) {
+        } else if (teacher?.specialty) {
           myStudents = data.filter((s: any) => s.specialty === teacher.specialty);
           setStudents(myStudents.length > 0 ? myStudents : data.slice(0, 16));
         } else {

@@ -6,7 +6,7 @@ export const INITIAL_NEWS_ARTICLES: NewsArticle[] = [
     title: 'Communiqué Officiel : Grande Rentrée Académique Fixée au 25 Octobre 2026 au CFP-ITMC',
     slug: 'rentree-academique-25-octobre-2026-cfp-itmc',
     excerpt: 'La Direction Générale du CFP-ITMC informe que la rentrée officielle aura lieu le 25 Octobre 2026. Frais d’inscription exceptionnels fixés à 20.000 FCFA pour toutes les 39 spécialités.',
-    content: `La Direction Générale du **Centre de Formation Professionnelle aux Métiers des Technologies de l'Information et du Management au Cameroun (CFP-ITMC)** porte à la connaissance de l'opinion publique, des étudiants, des travailleurs en reconversion et des parents d'élèves que la **Grande Rentrée Académique Officielle de la Session 2026-2027 est arrêtée au 25 Octobre 2026**.
+    content: `La Direction Générale du **Centre de Formation Professionnelle International de Technologie aux Métiers de Construction (CFP-ITMC)** porte à la connaissance de l'opinion publique, des étudiants, des travailleurs en reconversion et des parents d'élèves que la **Grande Rentrée Académique Officielle de la Session 2026-2027 est arrêtée au 25 Octobre 2026**.
 
 ---
 

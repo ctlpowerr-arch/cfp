@@ -20,7 +20,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { useAcademicYear } from '@/context/AcademicYearContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 import RollCallModal from '@/components/teacher/RollCallModal';
@@ -43,7 +43,21 @@ interface ClassItem {
 export default function TeacherClassesPage() {
   const { currentAcademicYear } = useAcademicYear();
   const navigate = useNavigate();
-  const [teacher, setTeacher] = useState<any>(null);
+  const outletCtx = useOutletContext<{ teacher?: any }>() || {};
+  const [teacher, setTeacher] = useState<any>(() => {
+    if (outletCtx.teacher) return outletCtx.teacher;
+    try {
+      const stored = localStorage.getItem('teacherData');
+      if (stored) return JSON.parse(stored);
+    } catch {}
+    return {
+      id: "TCH-001",
+      name: "Dr. Jean-Paul Kamga",
+      email: "jp.kamga@itmc-it.cm",
+      specialty: "Génie Logiciel",
+      assignedClasses: ["G1", "L3-GL"]
+    };
+  });
   const [myClasses, setMyClasses] = useState<ClassItem[]>([]);
   const [scheduleSessions, setScheduleSessions] = useState<any[]>([]);
   const [studentsList, setStudentsList] = useState<any[]>([]);
@@ -56,6 +70,10 @@ export default function TeacherClassesPage() {
 
   useEffect(() => {
     // Read logged-in teacher info
+    if (outletCtx.teacher) {
+      setTeacher(outletCtx.teacher);
+      return;
+    }
     const stored = localStorage.getItem('teacherData');
     if (stored) {
       try {
@@ -64,7 +82,7 @@ export default function TeacherClassesPage() {
         console.error(e);
       }
     }
-  }, []);
+  }, [outletCtx.teacher]);
 
   useEffect(() => {
     if (!teacher) return;
